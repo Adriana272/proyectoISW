@@ -14,76 +14,242 @@ public class JVentana extends JFrame {
     private static int id;
     private static String password;
 
+    private static String IdUsuario;
+
 
     public static void main(String[] args) {
         //new JVentana();
-        JFrame frame = new JFrame("Madrimentate");
-        frame.setSize(500, 250);
+        JFrame frame = new JFrame("MADRIMENTATE");
+        frame.setSize(650, 500);
         //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        frame.setLocationRelativeTo(null);
         JPanel panel = new JPanel();
         frame.add(panel);
-        placeComponents(panel);
+        placeComponentsInicio(panel);
         frame.setVisible(true);
         frame.setResizable(true);
         //frame.pack();
     }
 
-    //public int id;
-    //public String password;
-   //public JVentana() {
-    private static void placeComponents(JPanel panel) {
-            panel.setLayout(null);
 
-            final JLabel userLabel = new JLabel("User");
-            userLabel.setBounds(10, 10, 80, 25);
-            panel.add(userLabel);
+    private static void placeComponentsInicio(JPanel panelLogin) {
+            panelLogin.setLayout(null);
 
-            JTextField userText = new JTextField(20);
-            userText.setBounds(100, 10, 160, 25);
-            panel.add(userText);
+            final JLabel userLabelLogin = new JLabel("Id");
+            userLabelLogin.setBounds(50, 220, 160, 40);
+            panelLogin.add(userLabelLogin);
 
-            final  JLabel passwordLabel = new JLabel("Password");
-            passwordLabel.setBounds(10, 40, 80, 25);
-            panel.add(passwordLabel);
+            JTextField userTextLogin = new JTextField(20);
+            userTextLogin.setBounds(245, 220, 340, 40);
+            panelLogin.add(userTextLogin);
+            IdUsuario = userTextLogin.getText();
 
-            final  JPasswordField passwordText = new JPasswordField(20);
-            passwordText.setBounds(100, 40, 160, 25);
-            panel.add(passwordText);
+            final  JLabel passwordLabelLogin = new JLabel("Password");
+            passwordLabelLogin.setBounds(50, 270, 160, 40);
+            //passwordLabel.setResizable(true);
+            panelLogin.add(passwordLabelLogin);
+
+            final  JPasswordField passwordTextLogin = new JPasswordField(20);
+            passwordTextLogin.setBounds(245, 270, 340, 40);
+            //passwordText.setResizable(true);
+            panelLogin.add(passwordTextLogin);
 
             //insertar imagen
-            JLabel label= new JLabel();
-           // label.setIcon(new ImageIcon("src/main/resources/images"));
-            /*ImageIcon icono = new javax.swing.ImageIcon(getClass().getResource("main/resources/images/madrimentate.jpg"));
-            Image imagen = icono.getImage();
-            ImageIcon iconoEscalado = new ImageIcon (imagen.getScaledInstance(100,100,Image.SCALE_SMOOTH));
-            label.setIcon(iconoEscalado);*/
-            
-            //insertar boton
+            JLabel img = new JLabel(" ");
+            ImageIcon Imagen = new ImageIcon("src/main/resources/images/madrimentate2.jpg");
+            img.setIcon(Imagen);
+            img.setSize(160,160);
+            img.setLocation(245,25);
+            img.setVisible(true);
+            panelLogin.add(img);
 
-            final  JButton btnInformacion = new JButton("login");
-            btnInformacion.setBounds(10, 80, 80, 25);
+            //insertar boton registro
+            final  JButton btnReg = new JButton("Crear una cuenta");
+            btnReg.setBounds(245, 400, 160, 40);
+            panelLogin.add(btnReg);
 
-            panel.add(btnInformacion);
+            btnReg.addActionListener(actionEvent -> {
+                JFrame frameReg = new JFrame("REGISTRO");
+                frameReg.setSize(650, 500);
+                frameReg.setLocationRelativeTo(null);
+                //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+                frameReg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                JPanel panelReg = new JPanel();
+                frameReg.add(panelReg);
+                placeComponentsRegistro(panelReg);
+                frameReg.setVisible(true);
+                frameReg.setResizable(true);
 
-            JLabel lblResultado = new JLabel("El usuario correspondiente a las credenciales es: ", SwingConstants.CENTER);
-            JTextField txtResultado = new JTextField();
-            txtResultado.setBounds(new Rectangle(100, 80, 160, 25));
-            txtResultado.setEditable(false);
-            //txtResultado.setResizable(true);
-            //txtResultado.setVerticalAlignment(JTextField.SOUTH);;
-            panel.add(lblResultado);
-            panel.add(txtResultado);
+            });
+
+            //insertar boton login
+            final  JButton btnInformacion = new JButton("Login");
+            btnInformacion.setBounds(245, 350, 160, 40);
+            panelLogin.add(btnInformacion);
+
 
             //Añado el listener al botón
             btnInformacion.addActionListener(actionEvent -> {
-                id=Integer.parseInt(userText.getText());
-                password=(passwordText).toString();
-                txtResultado.setText(recuperarInformacion());
+                id=Integer.parseInt(userTextLogin.getText());
+                password=(passwordTextLogin).toString();
+                JFrame framePerfil = new JFrame("PERFIL "+ recuperarInformacion().toUpperCase());
+                framePerfil.setSize(650, 300);
+                framePerfil.setLocationRelativeTo(null);
+                //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+                framePerfil.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                JPanel panel = new JPanel();
+                framePerfil.add(panel);
+                placeComponentsPerfil(panel);
+                framePerfil.setVisible(true);
+                framePerfil.setResizable(true);
+
                 });
 
-            }
+    }
+
+    private static void placeComponentsRegistro(JPanel panelReg) {
+        panelReg.setLayout(null);
+
+        final JLabel idLabelReg = new JLabel("Id");
+        idLabelReg.setBounds(50, 50, 160, 40);
+        panelReg.add(idLabelReg);
+
+        JTextField idTextReg = new JTextField(20);
+        idTextReg.setBounds(170, 50, 340, 40);
+        panelReg.add(idTextReg);
+
+        final JLabel userLabelReg = new JLabel("Nombre");
+        userLabelReg.setBounds(50, 100, 160, 40);
+        panelReg.add(userLabelReg);
+
+        JTextField userTextReg = new JTextField(20);
+        userTextReg.setBounds(170, 100, 340, 40);
+        panelReg.add(userTextReg);
+
+        final JLabel passwordLabelReg = new JLabel("Password");
+        passwordLabelReg.setBounds(50, 150, 160, 40);
+        //passwordLabel.setResizable(true);
+        panelReg.add(passwordLabelReg);
+
+        final JPasswordField passwordTextReg = new JPasswordField(20);
+        passwordTextReg.setBounds(170, 150, 340, 40);
+        //passwordText.setResizable(true);
+        panelReg.add(passwordTextReg);
+
+        //insertar boton registro
+        final JButton btnReg2 = new JButton("Registrarme");
+        btnReg2.setBounds(245, 220, 160, 40);
+        panelReg.add(btnReg2);
+    }
+
+    private static void placeComponentsPerfil(JPanel panelperfil) {
+
+        JPanel panelperfilnorte = new JPanel();
+        JPanel panelperfilcentro = new JPanel();
+        panelperfilcentro.setLayout(new BoxLayout(panelperfilcentro, BoxLayout.Y_AXIS));
+        JPanel panelperfilsur= new JPanel(new GridLayout());
+        panelperfilsur.setLayout(new java.awt.GridLayout(1,3));
+
+        final JLabel idLabelPerfil = new JLabel("Id:");
+        idLabelPerfil.setBounds(50, 220, 160, 40);
+        panelperfilcentro.add(idLabelPerfil);
+
+        final JTextField idTextPerfil = new JTextField(20);
+        //idTextPerfil.setBounds(260, 220, 340, 40);
+        idTextPerfil.setText(IdUsuario);
+        panelperfilcentro.add(idTextPerfil);
+        idTextPerfil.setEditable(false);
+
+        final  JLabel userLabelPerfil = new JLabel("Nombre:");
+        //userLabelPerfil.setBounds(50, 270, 160, 40);
+        //passwordLabel.setResizable(true);
+        panelperfilcentro.add(userLabelPerfil);
+
+        final  JTextField userTextPerfil = new JTextField(20);
+        //userTextPerfil.setBounds(260, 270, 340, 40);
+        userTextPerfil.setText(recuperarInformacion());
+        userTextPerfil.setEditable(false);
+        panelperfilcentro.add(userTextPerfil);
+
+        //insertar imagen
+        JLabel img = new JLabel(" ");
+        ImageIcon Imagen = new ImageIcon("src/main/resources/images/perfil.png");
+        img.setIcon(Imagen);
+        img.setSize(160,160);
+        //img.setLocation(245,25);
+        img.setVisible(true);
+        panelperfilnorte.add(img);
+
+        //insertar botones reservas, pedidos, configuracion.
+        final JButton btnReservas = new JButton("Mis Reservas");
+        //btnReservas.setBounds(245, 220, 160, 40);
+        ImageIcon iconoreservas=new ImageIcon("src/main/resources/images/reserva.png");
+        btnReservas.setIcon(iconoreservas);
+        panelperfilsur.add(btnReservas);
+
+        //Action listener boton reservas
+        btnReservas.addActionListener(actionEvent -> {
+            JFrame frameRes = new JFrame("RESERVAS");
+            frameRes.setSize(650, 300);
+            frameRes.setLocationRelativeTo(null);
+            //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+            frameRes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            JPanel panelRes = new JPanel();
+            //placeComponentsReservas(panelRes);
+            frameRes.add(panelRes);
+            frameRes.setVisible(true);
+            frameRes.setResizable(true);
+
+        });
+
+        final JButton btnPedidos = new JButton("Mis Pedidos");
+        //btnPedidos.setBounds(245, 220, 160, 40);
+        ImageIcon iconopedidos=new ImageIcon("src/main/resources/images/pedido.png");
+        btnPedidos.setIcon(iconopedidos);
+        panelperfilsur.add(btnPedidos);
+
+        //Action listener boton pedidos
+        btnPedidos.addActionListener(actionEvent -> {
+            JFrame framePed = new JFrame("PEDIDOS");
+            framePed.setSize(650, 300);
+            framePed.setLocationRelativeTo(null);
+            //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+            framePed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            JPanel panelPed = new JPanel();
+            //placeComponentsPedidos(panelPed);
+            framePed.add(panelPed);
+            framePed.setVisible(true);
+            framePed.setResizable(true);
+
+        });
+
+        final JButton btnAjustes = new JButton("Ajustes");
+        //btnConfig.setBounds(245, 220, 160, 40);
+        ImageIcon iconoajustes=new ImageIcon("src/main/resources/images/ajustes.png");
+        btnAjustes.setIcon(iconoajustes);
+        panelperfilsur.add(btnAjustes);
+
+        //Action listener boton ajustes
+        btnAjustes.addActionListener(actionEvent -> {
+            JFrame frameAj = new JFrame("AJUSTES");
+            frameAj.setSize(650, 300);
+            frameAj.setLocationRelativeTo(null);
+            //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+            frameAj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            JPanel panelAj = new JPanel();
+            //placeComponentsAjustes(panelAj);
+            frameAj.add(panelAj);
+            frameAj.setVisible(true);
+            frameAj.setResizable(true);
+
+        });
+
+        panelperfil.add(panelperfilnorte, BorderLayout.NORTH);
+        panelperfil.add(panelperfilcentro, BorderLayout.CENTER);
+        panelperfil.add(panelperfilsur, BorderLayout.SOUTH);
+
+    }
 
     private static String recuperarInformacion() {
         Client cliente=new Client();
@@ -113,76 +279,3 @@ public class JVentana extends JFrame {
         this.password = password;
     }
 }
-
-        /*super("MADRIMENTATE");
-        this.setLayout(new BorderLayout());
-        //Pongo un panel arriba con el título
-        JPanel pnlNorte = new JPanel();
-        JLabel lblTitulo = new JLabel("LOGIN", SwingConstants.CENTER);
-        lblTitulo.setFont(new Font("Courier", Font.BOLD, 20));
-        pnlNorte.add(lblTitulo);
-        this.add(pnlNorte, BorderLayout.NORTH);*/
-
-/*
-        //Pongo el panel central el botón
-        JPanel pnlCentro = new JPanel();
-        JLabel lblId = new JLabel("Usuario", SwingConstants.CENTER);
-        JButton btnInformacion = new JButton("Enter");
-        JTextField txtId = new JTextField();
-        txtId.setBounds(new Rectangle(250,150,150,250));
-        //txtId.setVerticalAlignment(JTextField.CENTER);
-        pnlCentro.add(lblId);
-        pnlCentro.add(txtId);
-        JLabel lblPw = new JLabel("Password", SwingConstants.CENTER);
-        JTextField txtPw = new JTextField();
-        txtPw.setBounds(new Rectangle(250,150,150,250));
-        //txtPw.setVerticalAlignment(JTextField.CENTER);
-        pnlCentro.add(lblPw);
-        pnlCentro.add(txtPw);
-        pnlCentro.add(btnInformacion);
-        pnlCentro.setLayout(new BoxLayout(pnlCentro, BoxLayout.	X_AXIS));
-        this.add(pnlCentro, BorderLayout.CENTER);
-
-        //El Sur lo hago para recoger el resultado
-        JPanel pnlSur = new JPanel();
-        JLabel lblResultado = new JLabel("El usuario correspondiente a las credenciales es: ", SwingConstants.CENTER);
-        JTextField txtResultado = new JTextField();
-        txtResultado.setBounds(new Rectangle(250,150,250,150));
-        txtResultado.setEditable(false);
-        //txtResultado.setVerticalAlignment(JTextField.SOUTH);;
-        pnlSur.add(lblResultado);
-        pnlSur.add(txtResultado);
-
-        //Añado el listener al botón
-        btnInformacion.addActionListener(actionEvent -> {
-            id=Integer.parseInt(txtId.getText());
-            password=(txtPw.getText()).toString();
-            txtResultado.setText(recuperarInformacion());
-
-        });
-        pnlSur.setLayout(new BoxLayout(pnlSur, BoxLayout.X_AXIS));
-        this.add(pnlSur,BorderLayout.SOUTH);
-        this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
-        //this.setVerticalAlignment(JLabel.CENTER);
-        this.setSize(700,700);
-        this.setResizable(true);
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
-    }
-
- */
-/*
-    public String recuperarInformacion() {
-        Client cliente=new Client();
-        HashMap<String,Object> session=new HashMap<>();
-        String context="/getCustomer";
-        session.put("id",id);
-        session.put("password", password);
-        session=cliente.sentMessage(context,session);
-        Customer cu=(Customer)session.get("Customer");
-        return cu.getName();
-    }
-
- */
-
