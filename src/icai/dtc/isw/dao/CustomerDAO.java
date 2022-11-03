@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import icai.dtc.isw.domain.Customer;
 
+import javax.swing.*;
+
 public class CustomerDAO {
 	
 	
@@ -29,7 +31,7 @@ public class CustomerDAO {
 	public static Customer getCliente(int id, String password) {
 		Connection con=ConnectionDAO.getInstance().getConnection();
 		Customer cu=null;
-		try (PreparedStatement pst = con.prepareStatement("SELECT * FROM usuarios WHERE id="+id);
+		try (PreparedStatement pst = con.prepareStatement("SELECT * FROM usuarios WHERE id="+id+"and password="+password);
 			 ResultSet rs = pst.executeQuery()) {
 
 			while (rs.next()) {
@@ -37,7 +39,6 @@ public class CustomerDAO {
 			}
 
 		} catch (SQLException ex) {
-
 			System.out.println(ex.getMessage());
 		}
 		return cu;

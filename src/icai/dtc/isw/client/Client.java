@@ -16,6 +16,8 @@ import icai.dtc.isw.configuration.PropertiesISW;
 import icai.dtc.isw.domain.Customer;
 import icai.dtc.isw.message.Message;
 
+import javax.swing.*;
+
 public class Client {
 	private String host;
 	private int port;
@@ -102,8 +104,9 @@ public class Client {
 				System.err.println("Unknown host: " + host);
 				System.exit(1);
 			} catch (IOException e) {
-				System.err.println("Unable to get streams from server");
-				System.exit(1);
+				JOptionPane.showMessageDialog(null, "Operación 3 fallida bro");
+				//System.err.println("Unable to get streams from server");
+				//System.exit(1);
 			}		
 
 			/** Closing all the resources */

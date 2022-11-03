@@ -15,6 +15,8 @@ import icai.dtc.isw.controler.CustomerControler;
 import icai.dtc.isw.domain.Customer;
 import icai.dtc.isw.message.Message;
 
+import javax.swing.*;
+
 public class SocketServer extends Thread {
 	public static int port = 8081; //Valor por defecto
 
@@ -102,7 +104,8 @@ public class SocketServer extends Thread {
 			*/
 
 		} catch (IOException ex) {
-			System.out.println("Unable to get streams from client");
+			//System.out.println("Unable to get streams from client");
+			JOptionPane.showMessageDialog(null, "Operación fallida bro");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -130,7 +133,8 @@ public class SocketServer extends Thread {
 				new SocketServer(server.accept());
 			}
 		} catch (IOException ex) {
-			System.out.println("Unable to start server.");
+			JOptionPane.showMessageDialog(null, "Operación 2 fallida bro");
+			//System.out.println("Unable to start server.");
 		} finally {
 			try {
 				if (server != null)
