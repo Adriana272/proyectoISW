@@ -2,11 +2,12 @@ package icai.dtc.isw.ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 
 import static icai.dtc.isw.ui.JVentana.recuperarInformacion;
 
 
-public class PlaceComponentsPerfil extends JPanel{
+public class PlaceComponentsPerfil extends JPanel implements Serializable {
 
      private  int id;
      private  String password;

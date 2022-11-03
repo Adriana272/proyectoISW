@@ -6,8 +6,9 @@ import icai.dtc.isw.server.SocketServer;
 import static icai.dtc.isw.ui.JVentana.recuperarInformacion;
 
 import javax.swing.*;
+import java.io.Serializable;
 
-public class PlaceComponentsInicio extends JPanel {
+public class PlaceComponentsInicio extends JPanel implements Serializable {
 
         private static int id;
         private static String password;

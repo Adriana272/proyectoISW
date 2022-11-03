@@ -1,9 +1,9 @@
 package icai.dtc.isw.ui;
 
-
+import java.io.Serializable;
 import javax.swing.*;
 
-public class PlaceComponentsRegistro extends JPanel {
+public class PlaceComponentsRegistro extends JPanel implements Serializable {
 
 
     public PlaceComponentsRegistro() {
