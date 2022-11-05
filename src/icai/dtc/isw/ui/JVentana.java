@@ -42,6 +42,7 @@ public class JVentana extends JFrame {
     }
 
 
+
     public int getId() {
         return id;
     }

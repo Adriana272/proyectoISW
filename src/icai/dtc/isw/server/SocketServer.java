@@ -105,7 +105,7 @@ public class SocketServer extends Thread {
 
 		} catch (IOException ex) {
 			//System.out.println("Unable to get streams from client");
-			JOptionPane.showMessageDialog(null, "Operación fallida bro");
+			JOptionPane.showMessageDialog(null, "No hay ningún usuario con esos datos registrado");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -133,8 +133,7 @@ public class SocketServer extends Thread {
 				new SocketServer(server.accept());
 			}
 		} catch (IOException ex) {
-			JOptionPane.showMessageDialog(null, "Operación 2 fallida bro");
-			//System.out.println("Unable to start server.");
+			System.out.println("Unable to start server.");
 		} finally {
 			try {
 				if (server != null)

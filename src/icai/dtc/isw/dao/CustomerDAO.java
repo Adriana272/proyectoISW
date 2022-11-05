@@ -7,13 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import icai.dtc.isw.domain.Customer;
+import icai.dtc.isw.domain.Usuario;
 
 import javax.swing.*;
 
 public class CustomerDAO {
-	
-	
-	
+
 	public static void getClientes(ArrayList<Customer> lista) {
 		Connection con=ConnectionDAO.getInstance().getConnection();
 		try (PreparedStatement pst = con.prepareStatement("SELECT * FROM usuarios");
@@ -28,10 +27,11 @@ public class CustomerDAO {
             System.out.println(ex.getMessage());
         }
 	}
-	public static Customer getCliente(int id, String password) {
+
+	public static Customer getCliente(int id) {
 		Connection con=ConnectionDAO.getInstance().getConnection();
 		Customer cu=null;
-		try (PreparedStatement pst = con.prepareStatement("SELECT * FROM usuarios WHERE id="+id+"and password="+password);
+		try (PreparedStatement pst = con.prepareStatement("SELECT * FROM usuarios WHERE id="+id);
 			 ResultSet rs = pst.executeQuery()) {
 
 			while (rs.next()) {
@@ -43,6 +43,20 @@ public class CustomerDAO {
 		}
 		return cu;
 		//return new Customer("1","Atilano");
+	}
+
+	public static void addUsuario(Usuario usuario) {
+		Connection con=ConnectionDAO.getInstance().getConnection();
+		//Customer cu=null;
+		try {
+			PreparedStatement pst= con.prepareStatement("INSERT INTO usuarios VALUES ('" + usuario.getId() + "', '" + usuario.getNombre() + "', '" + usuario.getPassword() + "')");
+			pst.executeQuery();
+			pst.executeUpdate();
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+		System.out.println("Usuario creado correctamente");
 	}
 	
 	public static void main(String[] args) {

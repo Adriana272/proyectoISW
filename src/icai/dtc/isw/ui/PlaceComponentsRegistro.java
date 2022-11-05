@@ -1,5 +1,9 @@
 package icai.dtc.isw.ui;
 
+import icai.dtc.isw.dao.CustomerDAO;
+import icai.dtc.isw.domain.Customer;
+import icai.dtc.isw.domain.Usuario;
+
 import java.io.Serializable;
 import javax.swing.*;
 
@@ -31,7 +35,7 @@ public class PlaceComponentsRegistro extends JPanel implements Serializable {
         //passwordLabel.setResizable(true);
         this.add(passwordLabelReg);
 
-        final JPasswordField passwordTextReg = new JPasswordField(20);
+        final JTextField passwordTextReg = new JPasswordField(20);
         passwordTextReg.setBounds(170, 150, 340, 40);
         //passwordText.setResizable(true);
         this.add(passwordTextReg);
@@ -41,5 +45,12 @@ public class PlaceComponentsRegistro extends JPanel implements Serializable {
         btnReg2.setBounds(245, 220, 160, 40);
         this.add(btnReg2);
 
+        btnReg2.addActionListener(actionEvent -> {
+            try{
+                CustomerDAO.addUsuario(new Usuario(Integer.parseInt(idTextReg.getText()), userTextReg.getText(), passwordTextReg.getText()));
+            } catch (Exception e){
+                JOptionPane.showMessageDialog(null,"no va");
+            }
+        });
     }
 }

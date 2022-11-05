@@ -1,7 +1,9 @@
 package icai.dtc.isw.ui;
 
 import icai.dtc.isw.client.Client;
+import icai.dtc.isw.dao.CustomerDAO;
 import icai.dtc.isw.domain.Customer;
+import icai.dtc.isw.domain.Usuario;
 import icai.dtc.isw.server.SocketServer;
 import static icai.dtc.isw.ui.JVentana.recuperarInformacion;
 
@@ -32,7 +34,7 @@ public class PlaceComponentsInicio extends JPanel implements Serializable {
         //passwordLabel.setResizable(true);
         this.add(passwordLabelLogin);
 
-        final  JPasswordField passwordTextLogin = new JPasswordField(20);
+        final  JTextField/*JPasswordField*/ passwordTextLogin = new JPasswordField(20);
         passwordTextLogin.setBounds(245, 270, 340, 40);
         //passwordText.setResizable(true);
         this.add(passwordTextLogin);
@@ -75,7 +77,9 @@ public class PlaceComponentsInicio extends JPanel implements Serializable {
         //Añado el listener al botón
         btnInformacion.addActionListener(actionEvent -> {
             id=Integer.parseInt(userTextLogin.getText());
+            System.out.println("He leido este id: "+id);
             password=(passwordTextLogin).toString();
+            System.out.println("He leido esta contraseña: "+password);
             JFrame framePerfil = new JFrame("PERFIL "+ recuperarInformacion().toUpperCase());
             framePerfil.setSize(650, 300);
             framePerfil.setLocationRelativeTo(null);
