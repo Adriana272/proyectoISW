@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.Serializable;
 
-import static icai.dtc.isw.ui.JVentana.recuperarInformacion;
+import static icai.dtc.isw.ui.PlaceComponentsInicio.recuperarInformacion;
 
 
 public class PlaceComponentsPerfil extends JPanel implements Serializable {
@@ -33,9 +33,11 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
 
         final JTextField idTextPerfil = new JTextField(20);
         //idTextPerfil.setBounds(260, 220, 340, 40);
-        idTextPerfil.setText(IdUsuario);
-        panelperfilcentro.add(idTextPerfil);
+         int idperfil = recuperarInformacion().getId();
+        idTextPerfil.setText(Integer.toString(idperfil));
         idTextPerfil.setEditable(false);
+        panelperfilcentro.add(idTextPerfil);
+
 
         final  JLabel userLabelPerfil = new JLabel("Nombre:");
         //userLabelPerfil.setBounds(50, 270, 160, 40);
@@ -44,7 +46,7 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
 
         final  JTextField userTextPerfil = new JTextField(20);
         //userTextPerfil.setBounds(260, 270, 340, 40);
-        userTextPerfil.setText(recuperarInformacion());
+        userTextPerfil.setText(recuperarInformacion().getPw());
         userTextPerfil.setEditable(false);
         panelperfilcentro.add(userTextPerfil);
 

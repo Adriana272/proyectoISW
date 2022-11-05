@@ -10,6 +10,6 @@ public class CustomerControler {
 	public void getCustomers(ArrayList<Customer> lista) {
 		CustomerDAO.getClientes(lista);
 	}
-	public Customer getCustomer(int id, String password) {return(CustomerDAO.getCliente(id));}
+	public Customer getCustomer(int id, String password) {return(CustomerDAO.getCliente(id,password));}
 	//public void setCustomer(int newid, String newnombre, String newpassword) {return(CustomerDAO.setCliente(newid, newnombre, newpassword));}
 }

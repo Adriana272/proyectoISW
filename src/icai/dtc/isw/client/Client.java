@@ -104,7 +104,7 @@ public class Client {
 				System.err.println("Unknown host: " + host);
 				System.exit(1);
 			} catch (IOException e) {
-				JOptionPane.showMessageDialog(null, "Operación 3 fallida bro");
+				JOptionPane.showMessageDialog(null, "No hay usuarios");
 				//System.err.println("Unable to get streams from server");
 				//System.exit(1);
 			}		

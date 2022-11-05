@@ -61,6 +61,7 @@ public class SocketServer extends Thread {
 		    		break;
 				case "/getCustomer":
 					int id= (int) session.get("id");
+					System.out.println(id);
 					String password= (String) session.get("password");
 					customerControler=new CustomerControler();
 					Customer cu=customerControler.getCustomer(id, password);

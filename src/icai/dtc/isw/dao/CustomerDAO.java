@@ -19,7 +19,7 @@ public class CustomerDAO {
                 ResultSet rs = pst.executeQuery()) {
 
             while (rs.next()) {
-            	lista.add(new Customer(rs.getString(1),rs.getString(2),rs.getString(3)));
+            	lista.add(new Customer(rs.getInt(1),rs.getString(2),rs.getString(3)));
             }
 
         } catch (SQLException ex) {
@@ -28,14 +28,18 @@ public class CustomerDAO {
         }
 	}
 
-	public static Customer getCliente(int id) {
+	public static Customer getCliente(int id, String password) {
 		Connection con=ConnectionDAO.getInstance().getConnection();
 		Customer cu=null;
-		try (PreparedStatement pst = con.prepareStatement("SELECT * FROM usuarios WHERE id="+id);
-			 ResultSet rs = pst.executeQuery()) {
+		System.out.println(id);
+		try {
+			 PreparedStatement pst = con.prepareStatement("SELECT * FROM usuarios WHERE id=?"); // WHERE id="+id);
+			 pst.setInt(1,id);
+			 ResultSet rs = pst.executeQuery();
 
 			while (rs.next()) {
-				cu= new Customer(rs.getString(1),rs.getString(2),rs.getString(3));
+				cu= new Customer(rs.getInt(1),rs.getString(2),rs.getString(3));
+				System.out.println(rs.getInt(1));
 			}
 
 		} catch (SQLException ex) {

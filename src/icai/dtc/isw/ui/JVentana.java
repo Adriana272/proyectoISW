@@ -17,7 +17,7 @@ public class JVentana extends JFrame {
     public static void main(String[] args) {
         //new JVentana();
         JFrame frame = new JFrame("MADRIMENTATE");
-        frame.setSize(650, 500);
+        frame.setSize(650, 550);
         //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
@@ -30,16 +30,6 @@ public class JVentana extends JFrame {
         //frame.pack();
     }
 
-    public static String recuperarInformacion() {
-        Client cliente=new Client();
-        HashMap<String,Object> session=new HashMap<>();
-        String context="/getCustomer";
-        session.put("id",id);
-        session.put("password", password);
-        session=cliente.sentMessage(context,session);
-        Customer cu=(Customer)session.get("Customer");
-        return cu.getName();
-    }
 
 
 
