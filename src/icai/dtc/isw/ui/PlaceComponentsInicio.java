@@ -76,7 +76,27 @@ public class PlaceComponentsInicio extends JPanel implements Serializable {
 
         //Añado el listener al botón
         btnInformacion.addActionListener(actionEvent -> {
-            id=Integer.parseInt(userTextLogin.getText());
+            if(recuperarInformacion().contains(new Usuario(Integer.parseInt(userTextLogin.getText()),(passwordTextLogin.getText())))){
+                id=Integer.parseInt(userTextLogin.getText());
+                System.out.println("He leido este id: "+id);
+                password=(passwordTextLogin).toString();
+                System.out.println("He leido esta contraseña: "+password);
+                JFrame framePerfil = new JFrame("PERFIL "+ recuperarInformacion().toUpperCase());
+                framePerfil.setSize(650, 300);
+                framePerfil.setLocationRelativeTo(null);
+                //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+                framePerfil.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                //JPanel panel = new JPanel();
+                //framePerfil.add(panel);
+                JPanel perfil= new PlaceComponentsPerfil();
+                framePerfil.add(perfil);
+                framePerfil.setVisible(true);
+                framePerfil.setResizable(true);
+
+            }else{
+                JOptionPane.showMessageDialog(null, "NO existe ningún usuario registrado con dichas credenciales");
+            }
+            /*id=Integer.parseInt(userTextLogin.getText());
             System.out.println("He leido este id: "+id);
             password=(passwordTextLogin).toString();
             System.out.println("He leido esta contraseña: "+password);
@@ -90,7 +110,7 @@ public class PlaceComponentsInicio extends JPanel implements Serializable {
             JPanel perfil= new PlaceComponentsPerfil();
             framePerfil.add(perfil);
             framePerfil.setVisible(true);
-            framePerfil.setResizable(true);
+            framePerfil.setResizable(true);*/
 
         });
 

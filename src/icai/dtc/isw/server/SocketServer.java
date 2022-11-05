@@ -104,8 +104,8 @@ public class SocketServer extends Thread {
 			*/
 
 		} catch (IOException ex) {
-			//System.out.println("Unable to get streams from client");
-			JOptionPane.showMessageDialog(null, "No hay ningún usuario con esos datos registrado");
+			System.out.println("Unable to get streams from client");
+			JOptionPane.showMessageDialog(null, "No hay ningun usuario con esos datos registrado");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
