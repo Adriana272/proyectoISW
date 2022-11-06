@@ -60,7 +60,27 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
         img.setVisible(true);
         panelperfilnorte.add(img);
 
-        //insertar botones reservas, pedidos, configuracion.
+        //insertar botones home, reservas, pedidos, configuracion.
+         final JButton btnHome = new JButton("Home");
+         //btnConfig.setBounds(245, 220, 160, 40);
+         ImageIcon iconohome=new ImageIcon("src/main/resources/images/home.png");
+         btnHome.setIcon(iconohome);
+         panelperfilsur.add(btnHome);
+
+         //Action listener boton home
+         btnHome.addActionListener(actionEvent -> {
+             JFrame frameHome = new JFrame("HOME");
+             frameHome.setSize(650, 300);
+             frameHome.setLocationRelativeTo(null);
+             //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+             frameHome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+             JPanel panelHome = new PanelRestaurante();
+             //placeComponentsAjustes(panelAj);
+             frameHome.add(panelHome);
+             frameHome.setVisible(true);
+             frameHome.setResizable(true);
+
+         });
         final JButton btnReservas = new JButton("Mis Reservas");
         //btnReservas.setBounds(245, 220, 160, 40);
         ImageIcon iconoreservas=new ImageIcon("src/main/resources/images/reserva.png");

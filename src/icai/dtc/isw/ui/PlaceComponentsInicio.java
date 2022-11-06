@@ -84,7 +84,7 @@ public class PlaceComponentsInicio extends JPanel implements Serializable {
                     password = (passwordTextLogin).toString();
                     System.out.println("He leido esta contraseña: " + password);
                     JFrame framePerfil = new JFrame("PERFIL " + (cu.getPw()).toUpperCase());
-                    framePerfil.setSize(650, 300);
+                    framePerfil.setSize(750, 300);
                     framePerfil.setLocationRelativeTo(null);
                     //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
                     framePerfil.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
