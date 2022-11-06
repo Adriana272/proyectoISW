@@ -13,6 +13,7 @@ import java.util.HashMap;
 import icai.dtc.isw.configuration.PropertiesISW;
 import icai.dtc.isw.controler.CustomerControler;
 import icai.dtc.isw.domain.Customer;
+import icai.dtc.isw.domain.Restaurante;
 import icai.dtc.isw.message.Message;
 
 import javax.swing.*;
@@ -72,6 +73,28 @@ public class SocketServer extends Thread {
 					mensajeOut.setSession(session);
 					objectOutputStream.writeObject(mensajeOut);
 					break;
+				/*case "/getRestaurantes":
+					customerControler=new CustomerControler();
+					ArrayList<Restaurante> lista2=new ArrayList<Restaurante>();
+					customerControler.getCustomers(lista2);
+					mensajeOut.setContext("/getRestaurantesResponse");
+					//HashMap<String,Object> session=new HashMap<String, Object>();
+					session.put("Restaurantes",lista2);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/getRestaurante":
+					String tipo= (String) session.get("tipo");
+					System.out.println(tipo);
+					//String password= (String) session.get("password");
+					customerControler=new CustomerControler();
+					Restaurante re=customerControler.getRest(tipo);
+					System.out.println("tipo:"+re.getTipo());
+					mensajeOut.setContext("/getRestauranteResponse");
+					session.put("Restaurante",re);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;*/
 		    	
 		    	default:
 		    		System.out.println("\nParámetro no encontrado");

@@ -70,7 +70,7 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
          //Action listener boton home
          btnHome.addActionListener(actionEvent -> {
              JFrame frameHome = new JFrame("HOME");
-             frameHome.setSize(650, 300);
+             frameHome.setSize(650, 600);
              frameHome.setLocationRelativeTo(null);
              //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
              frameHome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -46,11 +46,11 @@ public class GestorBD {
         return restaurantesencontrados;
     }
 
-    public ArrayList<Restaurante> buscarRestauranteTipo(String tipoComida){
+    public ArrayList<Restaurante> buscarRestauranteTipo(String tipo){
         ArrayList<Restaurante> restaurantesencontrados = new ArrayList<>();
         System.out.println(restaurantes);
         restaurantes.forEach(restaurante -> {
-            if (restaurante.getTipoComida().toLowerCase().contains(tipoComida.toLowerCase())){
+            if (restaurante.getTipo().toLowerCase().contains(tipo.toLowerCase())){
                 restaurantesencontrados.add(restaurante);
             }
         });
@@ -81,7 +81,7 @@ public class GestorBD {
     public ArrayList<String> getTipoRestaurantes(String tipo){
         ArrayList<String> tiporestaurantes = new ArrayList<>();
 
-        restaurantes.forEach(c -> tiporestaurantes.add(c.getTipoComida()));
+        restaurantes.forEach(c -> tiporestaurantes.add(c.getTipo()));
         return tiporestaurantes;
     }
 
@@ -89,7 +89,7 @@ public class GestorBD {
     public ArrayList<String> getTipoRestaurantes(){
         ArrayList<String> tiporestaurantes = new ArrayList<>();
 
-        restaurantes.forEach(c -> tiporestaurantes.add(c.getTipoComida()));
+        restaurantes.forEach(c -> tiporestaurantes.add(c.getTipo()));
         return tiporestaurantes;
     }
 

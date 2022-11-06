@@ -16,19 +16,21 @@ public class CustomerDAO {
 	public CustomerDAO(Connection con) {
 		con = ConnectionDAO.getInstance().getConnection();
 	}
+
+
 	public static void getClientes(ArrayList<Customer> lista) {
 		Connection con=ConnectionDAO.getInstance().getConnection();
 		try (PreparedStatement pst = con.prepareStatement("SELECT * FROM usuarios");
-                ResultSet rs = pst.executeQuery()) {
+			 ResultSet rs = pst.executeQuery()) {
 
-            while (rs.next()) {
-            	lista.add(new Customer(rs.getInt(1),rs.getString(2),rs.getString(3)));
-            }
+			while (rs.next()) {
+				lista.add(new Customer(rs.getInt(1),rs.getString(2),rs.getString(3)));
+			}
 
-        } catch (SQLException ex) {
+		} catch (SQLException ex) {
 
-            System.out.println(ex.getMessage());
-        }
+			System.out.println(ex.getMessage());
+		}
 	}
 
 	public static Customer getCliente(int id, String password) {
@@ -36,9 +38,9 @@ public class CustomerDAO {
 		Customer cu=null;
 		System.out.println(id);
 		try {
-			 PreparedStatement pst = con.prepareStatement("SELECT * FROM usuarios WHERE id=?"); // WHERE id="+id);
-			 pst.setInt(1,id);
-			 ResultSet rs = pst.executeQuery();
+			PreparedStatement pst = con.prepareStatement("SELECT * FROM usuarios WHERE id=?"); // WHERE id="+id);
+			pst.setInt(1,id);
+			ResultSet rs = pst.executeQuery();
 
 			while (rs.next()) {
 				cu= new Customer(rs.getInt(1),rs.getString(2),rs.getString(3));
@@ -51,6 +53,42 @@ public class CustomerDAO {
 		return cu;
 		//return new Customer("1","Atilano");
 	}
+
+	/*public static void getRestaurantes(ArrayList<Customer> lista2) {
+		Connection con=ConnectionDAO.getInstance().getConnection();
+		try (PreparedStatement pst = con.prepareStatement("SELECT * FROM restaurantes");
+			 ResultSet rs = pst.executeQuery()) {
+
+			while (rs.next()) {
+				lista2.add(new Restaurante(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4)));
+			}
+
+		} catch (SQLException ex) {
+
+			System.out.println(ex.getMessage());
+		}
+	}
+
+	public static Restaurante getRestaurante(String tipo) {
+		Connection con=ConnectionDAO.getInstance().getConnection();
+		Restaurante re=null;
+		System.out.println(tipo);
+		try {
+			 PreparedStatement pst = con.prepareStatement("SELECT * FROM restaurantes WHERE tipo=?"); // WHERE id="+id);
+			 pst.setInt(1,tipo);
+			 ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				re= new Restaurante(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4));
+				System.out.println(rs.getInt(1));
+			}
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+		return re;
+		//return new Customer("1","Atilano");
+	}*/
 
 	public static void addUsuario(Usuario usuario) {
 		Connection con=ConnectionDAO.getInstance().getConnection();
@@ -68,7 +106,7 @@ public class CustomerDAO {
 
 	public void addRestaurante(Restaurante restaurante){
 		try{
-			con.prepareStatement("INSERT INTO restaurantes VALUES('"+ restaurante.getNombre()+ "', '"+restaurante.getId()+"', '"+restaurante.getCalle()+ "')").executeQuery();
+			con.prepareStatement("INSERT INTO restaurantes VALUES('"+ restaurante.getNombre()+ "', '"+restaurante.getId()+"', '"+restaurante.getDireccion()+ "')").executeQuery();
 		} catch (SQLException e){
 			System.out.println(e);
 		}

@@ -16,7 +16,7 @@ public class Restaurante {
     private boolean availabilityRestauran;
 
 
-    private String calle;
+    private String direccion;
     private int id;
     private int puntacion;
     private String opinion;
@@ -24,20 +24,20 @@ public class Restaurante {
     private boolean servicioDelivery;
     private Comida comida[];
     private int elementos;
-    private String tipoComida;
+    private String tipo;
 
-    public Restaurante(int id, String nombre, String calle, String tipoComida){
+    public Restaurante(int id, String nombre, String direccion, String tipo){
         this.id = id;
         this.nombre = nombre;
-        this.calle = calle;
-        this.tipoComida = tipoComida;
+        this.direccion = direccion;
+        this.tipo = tipo;
 
     }
 
 
-    public Restaurante(int id, String nombre, String calle, int puntacion, String opinion, float precioMedio, boolean servicioDelivery, Comida[] comida) {
+    public Restaurante(int id, String nombre, String direccion, int puntacion, String opinion, float precioMedio, boolean servicioDelivery, Comida[] comida) {
         this.nombre = nombre;
-        this.calle = calle;
+        this.direccion = direccion;
         this.puntacion = puntacion;
         this.opinion = opinion;
         this.precioMedio = precioMedio;
@@ -73,8 +73,8 @@ public class Restaurante {
         return nombre;
     }
 
-    public String getTipoComida(){
-        return tipoComida;
+    public String getTipo(){
+        return tipo;
     }
 
     public static String[] getTiposrestaurante() {
@@ -93,8 +93,8 @@ public class Restaurante {
         return availabilityRestauran;
     }
 
-    public String getCalle() {
-        return calle;
+    public String getDireccion() {
+        return direccion;
     }
 
     public int getId() {
@@ -123,5 +123,10 @@ public class Restaurante {
 
     public int getElementos() {
         return elementos;
+    }
+
+    @Override
+    public String toString(){
+        return ("Restaurante: "+getNombre()+", id: "+getId()+", dirección: "+getDireccion()+" y tipo de comida: "+getTipo()+".\n");
     }
 }
