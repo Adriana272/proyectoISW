@@ -131,12 +131,10 @@ public class CustomerDAO {
 		
 		
 		ArrayList<Customer> lista= new ArrayList<>();
-		CustomerDAO.getClientes(lista);
+		CustomerDAO.getCliente(1,"Adr1");
 		
 		
-		 for (Customer customer : lista) {			
-			System.out.println("He leído el id: "+customer.getId()+" con nombre: "+customer.getName());
-		}
+
 		
 	
 	}

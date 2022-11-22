@@ -10,7 +10,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 
 import icai.dtc.isw.configuration.PropertiesISW;
 import icai.dtc.isw.domain.Customer;
@@ -21,7 +21,7 @@ import javax.swing.*;
 public class Client {
 	private String host;
 	private int port;
-	final static Logger logger = Logger.getLogger(Client.class);
+	//final static Logger logger = Logger.getLogger(Client.class);
 	public Client(String host, int port) {
 		this.host=host;
 		this.port=port;
@@ -34,7 +34,7 @@ public class Client {
 		//Configure connections
 		//String host = PropertiesISW.getInstance().getProperty("host");
 		//int port = Integer.parseInt(PropertiesISW.getInstance().getProperty("port"));
-		Logger.getRootLogger().info("Host: "+host+" port"+port);
+		//Logger.getRootLogger().info("Host: "+host+" port"+port);
 		System.out.println("Host: "+host+" port"+port);
 		//Create a cliente class
 		//Client cliente=new Client(host, port);
@@ -62,7 +62,7 @@ public class Client {
 				System.out.println("He leído el id: "+customer.getId()+ "y la contraseña: "+customer.getPw()+" con nombre: "+customer.getName());
 				break;
 			default:
-				Logger.getRootLogger().info("Option not found");
+				//Logger.getRootLogger().info("Option not found");
 				System.out.println("\nError a la vuelta");
 				break;
 		

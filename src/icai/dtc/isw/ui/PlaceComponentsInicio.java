@@ -7,7 +7,9 @@ import icai.dtc.isw.domain.Usuario;
 import icai.dtc.isw.server.SocketServer;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.Serializable;
+import java.net.URL;
 import java.util.HashMap;
 
 public class PlaceComponentsInicio extends JPanel implements Serializable {
@@ -17,9 +19,14 @@ public class PlaceComponentsInicio extends JPanel implements Serializable {
         private static String IdUsuario;
         private static JTextField userTextLogin;
 
+        public Image imagenfondo;
+        public URL fondo;
+
         public PlaceComponentsInicio() {
 
             this.setLayout(null);
+
+            this.setBackground(Color.darkGray);
 
             final JLabel userLabelLogin = new JLabel("Id");
             userLabelLogin.setBounds(50, 220, 160, 40);
@@ -60,14 +67,17 @@ public class PlaceComponentsInicio extends JPanel implements Serializable {
                 frameReg.setLocationRelativeTo(null);
                 //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
                 frameReg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                //JPanel panelReg = new JPanel();
-                //frameReg.add(panelReg);
+                JPanel panelReg = new JPanel();
+                frameReg.add(panelReg);
                 JPanel registro = new PlaceComponentsRegistro();
                 frameReg.add(registro);
                 frameReg.setVisible(true);
                 frameReg.setResizable(true);
 
+
             });
+
+            //frame=800, 900
 
             //insertar boton login
             final JButton btnInformacion = new JButton("Login");
@@ -105,12 +115,17 @@ public class PlaceComponentsInicio extends JPanel implements Serializable {
                 Client cliente = new Client();
                 HashMap<String, Object> session = new HashMap<>();
                 String context = "/getCustomer";
-                System.out.println(userTextLogin.getText());
+                System.out.println("userRI: "+userTextLogin.getText());
                 session.put("id", Integer.parseInt(userTextLogin.getText()));
                 session.put("password", password);
                 session = cliente.sentMessage(context, session);
                 Customer cu = (Customer) session.get("Customer");
                 return cu;
             }
+
+            public void paintComponent(Graphics g){
+                g.drawImage(imagenfondo, 0, 0, getWidth(), getHeight(), null);
+            }
+
 
 }

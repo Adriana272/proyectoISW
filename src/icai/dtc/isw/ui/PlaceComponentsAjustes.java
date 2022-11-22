@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class PlaceComponentsAjustes extends JPanel implements Serializable {
 /*
-    public PlaceComponentsRegistro() {
+    public PlaceComponentsAjustes() {
 
         this.setLayout(null);
 
