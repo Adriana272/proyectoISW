@@ -63,7 +63,7 @@ public class PlaceComponentsInicio extends JPanel implements Serializable {
 
             btnReg.addActionListener(actionEvent -> {
                 JFrame frameReg = new JFrame("REGISTRO");
-                frameReg.setSize(650, 500);
+                frameReg.setSize(800, 900);
                 frameReg.setLocationRelativeTo(null);
                 //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
                 frameReg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

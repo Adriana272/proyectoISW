@@ -6,6 +6,7 @@ import icai.dtc.isw.domain.Restaurante;
 import icai.dtc.isw.domain.Usuario;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,55 +14,65 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import static javax.security.auth.callback.ConfirmationCallback.YES;
+
 public class PlaceComponentsAjustes extends JPanel implements Serializable {
-/*
+
     public PlaceComponentsAjustes() {
 
         this.setLayout(null);
 
-        final JLabel idLabelDel = new JLabel("Id");
-        idLabelDel.setBounds(50, 50, 160, 40);
-        this.add(idLabelDel);
-
-        JTextField idTextDel = new JTextField(20);
-        idTextDel.setBounds(170, 50, 340, 40);
-        this.add(idTextDel);
-
-
-        final JLabel passwordLabelDel = new JLabel("Password");
-        passwordLabelDel.setBounds(50, 100, 160, 40);
-        //passwordLabel.setResizable(true);
-        this.add(passwordLabelDel;
-
-        final JTextField passwordTextDel = new JPasswordField(20);
-        passwordTextDel.setBounds(170, 100, 340, 40);
-        //passwordText.setResizable(true);
-        this.add(passwordTextDel);
-
-        //insertar boton registro
+        //insertar boton delete
         final JButton btnDelete = new JButton("Eliminar cuenta");
         btnDelete.setBounds(245, 220, 160, 40);
         this.add(btnDelete);
 
         btnDelete.addActionListener(actionEvent -> {
-            try{
-                ArrayList<Restaurante> restaurantes= new ArrayList<>();
-                System.out.println(restaurantes);
-                Connection con= ConnectionDAO.getInstance().getConnection();
-                //String pizza="pizza";
-                try(PreparedStatement pst=con.prepareStatement("SELECT * FROM restaurantes WHERE tipo = 'asiatico'");
-                    ResultSet rs=pst.executeQuery()){
-                    while (rs.next()){
-                        restaurantes.add(new Restaurante(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)));
-                        System.out.println(restaurantes);
+            int dialogButton = JOptionPane.showConfirmDialog(null, "Está seguro de que desea eliminar su cuenta?", "Alerta!", JOptionPane.YES_NO_OPTION);
+            if (dialogButton == JOptionPane.YES_OPTION) {
 
+                String userDel = JOptionPane.showInputDialog("Introduzca 'id,contraseña (nombre en este caso)': ");
+                int idUserDel = Integer.parseInt(userDel.split(",")[0]);
+                String pwUserDel = userDel.split(",")[1];
+                System.out.println(userDel);
+                System.out.println(idUserDel);
+                System.out.println(pwUserDel);
+                Connection con = ConnectionDAO.getInstance().getConnection();
 
+                try (PreparedStatement pst = con.prepareStatement("DELETE FROM usuarios WHERE id =" + idUserDel+" password = "+pwUserDel);
+                     ResultSet rs = pst.executeQuery()) {
+                    while (rs.next()) {
+                        System.out.println(userDel);
                     }
-                } catch (SQLException ex){
+                    JOptionPane.showMessageDialog(null, "Usuario eliminado con éxito!");
+                    System.exit(1);
+                } catch (SQLException ex) { //me elimina el usuario bien, como hago para que esto no salte
                     System.out.println(ex.getMessage());
-                    System.out.println("No se encontraron restaurantes de comida asiática");
+                    System.out.println("No se ha podido eliminar el usuario");
                 }
+
             }
         });
- */
+
+        //insertar boton registro
+        final JButton btnEdit = new JButton("Editar datos");
+        btnEdit.setBounds(265, 220, 160, 40);
+        this.add(btnEdit);
+
+        btnEdit.addActionListener(actionEvent -> {
+            JFrame frameEdit = new JFrame("Edición datos");
+            frameEdit.setSize(800, 900);
+            //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+            frameEdit.setBackground(Color.darkGray);
+            frameEdit.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frameEdit.setLocationRelativeTo(null);
+            //JPanel panel = new JPanel();
+            //frame.add(panel);
+            JPanel Edicion = new PanelEdicion();
+            frameEdit.add(Edicion);
+            //frame.add(imagenFondo);
+            frameEdit.setVisible(true);
+            frameEdit.setResizable(true);
+        });
+    }
 }

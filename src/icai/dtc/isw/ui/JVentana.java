@@ -3,9 +3,11 @@ package icai.dtc.isw.ui;
 import icai.dtc.isw.client.Client;
 import icai.dtc.isw.domain.Customer;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 
 import icai.dtc.isw.controler.GestorBD;
@@ -29,6 +31,9 @@ public class JVentana extends javax.swing.JFrame {
     private JButton start;
     private PanelDeliveryRestaurante pnldeliveryrestauran;
     private PanelReservarMesa pnlReservar;
+
+    //background=imagenfondo.getImage()
+    private URL fondo;
     /*
     Image img= Toolkit.getDefaultToolkit().getImage("bin/images/fondo pantalla comida.jpg");
     public JVentana() throws IOException {
@@ -44,29 +49,40 @@ public class JVentana extends javax.swing.JFrame {
         setVisible(true);
     }*/
 
-    PanelFondoBeg panelfondo=new PanelFondoBeg();
+    //PanelFondoBeg panelfondo=new PanelFondoBeg();
     public JVentana(){
-        super();
-        CrearFormulario();
+        //initComponents();
+        /*PnlFondo pnlfondo=new PnlFondo();
+        this.add(pnlfondo, BorderLayout.CENTER);
+        this.pack();*/
+
+        /*try{
+            fondo= this.getClass().getResource("fondopantallacomida.jpg");
+            imagenFondo= ImageIO.read(fondo);
+        } catch(IOException ex){
+            ex.printStackTrace();
+            System.out.print("Imagen no cargada.");
+        }*/
     }
 
-    public void CrearFormulario() {
+    /*public void CrearFormulario() {
         Container contenedor = getContentPane();
         contenedor.add(panelfondo);
+    }*/
 
-    }
     public static void main(String[] args) throws Exception{
         //new JVentana();
         JFrame frame = new JFrame("MADRIMENTATE");
-        frame.setSize(650, 550);
+        frame.setSize(800, 900);
         //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
         frame.setBackground(Color.darkGray);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         //JPanel panel = new JPanel();
         //frame.add(panel);
-        JPanel inicio= new PlaceComponentsInicio();
-        frame.add(inicio);
+        JPanel empezar= new PanelEmpezar();
+        frame.add(empezar);
+        //frame.add(imagenFondo);
         frame.setVisible(true);
         frame.setResizable(true);
         //frame.pack();

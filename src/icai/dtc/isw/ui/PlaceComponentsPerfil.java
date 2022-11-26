@@ -132,12 +132,11 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
         //Action listener boton ajustes
         btnAjustes.addActionListener(actionEvent -> {
             JFrame frameAj = new JFrame("AJUSTES");
-            frameAj.setSize(650, 300);
+            frameAj.setSize(800, 900);
             frameAj.setLocationRelativeTo(null);
             //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
             frameAj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            JPanel panelAj = new JPanel();
-            //placeComponentsAjustes(panelAj);
+            JPanel panelAj = new PlaceComponentsAjustes();
             frameAj.add(panelAj);
             frameAj.setVisible(true);
             frameAj.setResizable(true);

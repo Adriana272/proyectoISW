@@ -104,6 +104,20 @@ public class CustomerDAO {
 		System.out.println("Usuario creado correctamente");
 	}
 
+	/*public static void editNombreUsuario(Usuario usuario) {
+		Connection con=ConnectionDAO.getInstance().getConnection();
+		//Customer cu=null;
+		try {
+			PreparedStatement pst= con.prepareStatement("UPDATE usuarios SET Nombre=" + usuario.getId() + "', '" + usuario.getNombre() + "', '" + usuario.getPassword() + "')");
+			pst.executeQuery();
+			pst.executeUpdate();
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+		System.out.println("Nombre de usuario editado correctamente");
+	}*/
+
 	public void addRestaurante(Restaurante restaurante){
 		try{
 			con.prepareStatement("INSERT INTO restaurantes VALUES('"+ restaurante.getNombre()+ "', '"+restaurante.getId()+"', '"+restaurante.getDireccion()+ "')").executeQuery();
