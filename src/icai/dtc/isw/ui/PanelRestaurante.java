@@ -21,22 +21,27 @@ public class PanelRestaurante extends JPanel{
 
     public PanelRestaurante() {
         //this.jVentanaMadrimentate = jVentanaMadrimentate;
-        this.setPreferredSize(new Dimension(200, 800));
-        this.setBackground(Color.orange);
-        this.setLayout(new BorderLayout());
+        //this.setPreferredSize(new Dimension(200, 800));
+        this.setBackground(Color.black);
+        this.setLayout(null);
 
         // JPanel panelPrincipal = new JPanel();
-        JPanel panelNorte = new JPanel();
-        JLabel madrimentate = new JLabel(new ImageIcon("main.resources.images/madrimentate.jpg"));
-        panelNorte.add(madrimentate);
-        this.add(panelNorte, BorderLayout.NORTH);
+        //JPanel panelNorte = new JPanel();
+        //JLabel madrimentate = new JLabel(new ImageIcon("main.resources.images/madrimentate.jpg"));
+        //panelNorte.add(madrimentate);
+        //this.add(panelNorte, BorderLayout.NORTH);
 
 
-        JPanel panelNorte2 = new JPanel(new FlowLayout());
+        //JPanel panelNorte2 = new JPanel(new FlowLayout());
         JButton buscarRestaurantelupa = new JButton("Buscar");
         buscarRestaurantelupa.setIcon(new ImageIcon("src/main/resources/images/lupa.png"));
+        buscarRestaurantelupa.setBounds(550,30,100,50);
+        this.add(buscarRestaurantelupa);
+        buscarRestaurantelupa.setVisible(true);
         JTextField txtRest = new JTextField(("Inserte restaurante..."));
-        setVisible(true);
+        txtRest.setBounds(200, 30, 300, 50);
+        this.add(txtRest);
+        txtRest.setVisible(true);
 
 
         /*buscarRestaurantelupa.addActionListener(e -> {
@@ -75,7 +80,7 @@ public class PanelRestaurante extends JPanel{
 
                 }
             JFrame frameBuscador = new JFrame("RESTAURANTE BUSCADO");
-            frameBuscador.setSize(750, 300);
+            frameBuscador.setSize(800, 900);
             frameBuscador.setLocationRelativeTo(null);
             //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
             frameBuscador.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -93,19 +98,27 @@ public class PanelRestaurante extends JPanel{
             });
 
 
-        panelNorte2.add(buscarRestaurantelupa);
-        panelNorte2.add(txtRest);
-        panelNorte.add(panelNorte2, BorderLayout.NORTH);
+        //panelNorte2.add(buscarRestaurantelupa);
+        //panelNorte2.add(txtRest);
+        //panelNorte.add(panelNorte2, BorderLayout.NORTH);
 
-        JPanel panelSur = new JPanel(new GridLayout(5, 2));
+        //JPanel panelSur = new JPanel(new GridLayout(5, 2));
         btnAsiatico.setText("Asiatico");
         btnAsiatico.setIcon(new ImageIcon("src/main/resources/images/asiatica.png"));
+        btnAsiatico.setBounds(100,150,250,250);
+        this.add(btnAsiatico);
         btnHamburguesa.setText("Hamburguesa");
         btnHamburguesa.setIcon(new ImageIcon("src/main/resources/images/hamburguesa.png"));
+        btnHamburguesa.setBounds(450,150,250,250);
+        this.add(btnHamburguesa);
         btnPizza.setText("Pizza");
         btnPizza.setIcon(new ImageIcon("src/main/resources/images/pizza.png"));
+        btnPizza.setBounds(100,450,250,250);
+        this.add(btnPizza);
         btnEspaniol.setText("Española");
         btnEspaniol.setIcon(new ImageIcon("src/main/resources/images/paella.png"));
+        btnEspaniol.setBounds(450,450,250,250);
+        this.add(btnEspaniol);
 
         /*btnHamburguesa.addActionListener(e -> {
             String hamburguesa = "hamburguesa";
@@ -351,16 +364,16 @@ public class PanelRestaurante extends JPanel{
 
 
 
+/*
+        this.add(btnPizza);
+        this.add(btnHamburguesa);
+        this.add(btnEspaniol);
+        this.add(btnAsiatico);*/
 
-        panelSur.add(btnPizza);
-        panelSur.add(btnHamburguesa);
-        panelSur.add(btnEspaniol);
-        panelSur.add(btnAsiatico);
 
-
-        this.add(panelSur, BorderLayout.SOUTH);
-        this.add(panelNorte, BorderLayout.NORTH);
-        this.add(panelNorte2, BorderLayout.CENTER);
+        //this.add(panelSur, BorderLayout.SOUTH);
+        //this.add(panelNorte, BorderLayout.NORTH);
+        //this.add(panelNorte2, BorderLayout.CENTER);
 
 
     }

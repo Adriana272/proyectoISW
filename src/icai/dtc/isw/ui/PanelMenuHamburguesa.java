@@ -20,15 +20,15 @@ public class PanelMenuHamburguesa extends JPanel implements Serializable {
         this.setBackground(Color.darkGray);
 
         //insertar imagen
-        /*
+        /* ¿POR QUÑE EN ESTE CASO NO PUEDO INSERTAR LA IMAGEN CORRECTAMENTE?
         JLabel imgMenu = new JLabel(" ");
         ImageIcon ImagenM = new ImageIcon("src/main/resources/images/pizarramenuredimensionada.jpg");
         imgMenu.setIcon(ImagenM);
         imgMenu.setSize(900, 639);
         imgMenu.setLocation(0, 0);
         imgMenu.setVisible(true);
-        this.add(imgMenu);
-        */
+        this.add(imgMenu);*/
+
 
         final  JTextArea hamburguesaEntrantes = new JTextArea(20,20);
         hamburguesaEntrantes.append("ENTRANTES");
@@ -48,6 +48,18 @@ public class PanelMenuHamburguesa extends JPanel implements Serializable {
         hamburguesaBebidas.setEditable(false);
         this.add(hamburguesaBebidas);
 
+        final  JTextArea PrecioM = new JTextArea(20,10);
+        PrecioM.append("Precio medio Menú");
+        PrecioM.setBounds(25, 450, 200, 25);
+        PrecioM.setEditable(false);
+        this.add(PrecioM);
+
+        final  JTextArea PrecioE = new JTextArea(20,10);
+        PrecioE.append("Precio Menú entero");
+        PrecioE.setBounds(250, 450, 200, 25);
+        PrecioE.setEditable(false);
+        this.add(PrecioE);
+
 
         //Crear ArrayList Restaurantes
         ArrayList rests=new ArrayList();
@@ -66,6 +78,60 @@ public class PanelMenuHamburguesa extends JPanel implements Serializable {
             System.out.println("No se encontraron restaurantes de hamburguesa");
         }
         System.out.println(rests);
+
+        final  JTextArea hamburguesaRestaurantes = new JTextArea(20,20);
+        hamburguesaRestaurantes.append(rests.toString());
+        hamburguesaRestaurantes.setBounds(25, 300, 850, 50);
+        hamburguesaRestaurantes.setEditable(false);
+        this.add(hamburguesaRestaurantes);
+
+        //Crear ArrayList PrecioMedio
+        ArrayList medio=new ArrayList();
+        System.out.println(rests);
+        //Connection con= ConnectionDAO.getInstance().getConnection();
+        //String pizza="pizza";
+        try(PreparedStatement pst=con.prepareStatement("SELECT preciomedio FROM menu WHERE tipo = 'hamburguesa'");
+            ResultSet rs=pst.executeQuery()){
+            while (rs.next()){
+                medio.add(rs.getInt(1));
+                System.out.println(medio);
+
+            }
+        } catch (SQLException ex){
+            System.out.println(ex.getMessage());
+            System.out.println("No se encontraron restaurantes de hamburguesa");
+        }
+        System.out.println(medio);
+
+        final  JTextArea hamburguesaPM = new JTextArea(20,20);
+        hamburguesaPM.append(medio.toString());
+        hamburguesaPM.setBounds(25, 475, 200, 75);
+        hamburguesaPM.setEditable(false);
+        this.add(hamburguesaPM);
+
+        //Crear ArrayList PrecioEntero
+        ArrayList entero=new ArrayList();
+        System.out.println(entero);
+        //Connection con= ConnectionDAO.getInstance().getConnection();
+        //String pizza="pizza";
+        try(PreparedStatement pst=con.prepareStatement("SELECT precioentero FROM menu WHERE tipo = 'hamburguesa'");
+            ResultSet rs=pst.executeQuery()){
+            while (rs.next()){
+                entero.add(rs.getInt(1));
+                System.out.println(entero);
+
+            }
+        } catch (SQLException ex){
+            System.out.println(ex.getMessage());
+            System.out.println("No se encontraron restaurantes de hamburguesa");
+        }
+        System.out.println(entero);
+
+        final  JTextArea hamburguesaPE = new JTextArea(20,20);
+        hamburguesaPE.append(entero.toString());
+        hamburguesaPE.setBounds(250, 475, 200, 75);
+        hamburguesaPE.setEditable(false);
+        this.add(hamburguesaPE);
 
         //Crear ArrayList Entrantes
         ArrayList entrantes= new ArrayList();
@@ -141,16 +207,11 @@ public class PanelMenuHamburguesa extends JPanel implements Serializable {
         hamburguesaTextField3.setEditable(false);
         this.add(hamburguesaTextField3);
 
-        final  JTextArea hamburguesaRestaurantes = new JTextArea(20,20);
-        hamburguesaRestaurantes.append(rests.toString());
-        hamburguesaRestaurantes.setBounds(25, 300, 850, 50);
-        hamburguesaRestaurantes.setEditable(false);
-        this.add(hamburguesaRestaurantes);
 
 
         final JButton btnPedir = new JButton("A domicilio");
-        btnPedir.setFont(new Font("Arial Black", Font.BOLD, 18));
-        btnPedir.setBounds(225, 400, 200, 50);
+        btnPedir.setFont(new Font("Arial Black", Font.BOLD, 11));
+        btnPedir.setBounds(500, 500, 150, 50);
         //ImageIcon iconoName = new ImageIcon("src/main/resources/images/info.png");
         //btnPedir.setIcon(iconoName);
         btnPedir.setBackground(Color.white);
@@ -158,8 +219,8 @@ public class PanelMenuHamburguesa extends JPanel implements Serializable {
 
 
         final JButton btnReservar = new JButton("Reservar mesa");
-        btnReservar.setFont(new Font("Arial Black", Font.BOLD, 18));
-        btnReservar.setBounds(475, 400, 200, 50);
+        btnReservar.setFont(new Font("Arial Black", Font.BOLD, 11));
+        btnReservar.setBounds(675, 500, 150, 50);
         //ImageIcon iconoName = new ImageIcon("src/main/resources/images/info.png");
         //btnPedir.setIcon(iconoName);
         btnReservar.setBackground(Color.white);
