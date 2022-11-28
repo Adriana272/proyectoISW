@@ -1,6 +1,7 @@
 package icai.dtc.isw.domain;
 
-public class DeliveryUberEats extends Delivery{
+public class DeliveryUberEats extends Delivery {
+
     private static float GASTOENVÍO = 3F;
     private float costefinal;
     private static float ENVIOPREFERENTE = 1;
@@ -22,9 +23,12 @@ public class DeliveryUberEats extends Delivery{
     }
 
     public float coste() {
-        return (GASTOENVÍO + super.coste());
+        return (GASTOENVÍO + super.coste(preferencia));
 
+    }
 
+    public float calcularTiempo(){
+        return(super.coste(preferencia));
     }
     public String toString(){
         return "el servicio Uber Eats" + "tiene un gasto de envio de " +  this.coste();

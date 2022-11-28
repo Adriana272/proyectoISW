@@ -1,6 +1,6 @@
 package icai.dtc.isw.domain;
 
-public class DeliveryDeliveroo extends Delivery {
+public class DeliveryDeliveroo extends Delivery{
     private static final float GASTOENVIO = 2.75F;
     private float costefinal;
     private static final  float ENVIOPREFERENTE = 1;
@@ -16,9 +16,13 @@ public class DeliveryDeliveroo extends Delivery {
 
 
     public float coste(){
-        return(GASTOENVIO+ super.coste());
+        return(GASTOENVIO+  coste(preferencia));
 
 
+    }
+
+    public float calcularTiempo(){
+        return(calcularTiempo(preferencia)+15);
     }
     public String toString(){
         return "el servicio delivery Deliveroo" + "tiene un gasto de envio de " +  this.coste();

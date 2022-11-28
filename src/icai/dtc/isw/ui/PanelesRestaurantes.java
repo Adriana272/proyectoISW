@@ -9,8 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.*;
 
 public class PanelesRestaurantes  extends JPanel implements Serializable {
 
@@ -111,7 +110,7 @@ public class PanelesRestaurantes  extends JPanel implements Serializable {
                 }
             } catch (SQLException ex){
                 System.out.println(ex.getMessage());
-                System.out.println("No se encontraron restaurantes de hamburguesa");
+                System.out.println("No se encontró el menu del restaurantes");
             }
             System.out.println(idmenu);
 
@@ -132,6 +131,94 @@ public class PanelesRestaurantes  extends JPanel implements Serializable {
                 platosTextField.append("\n");
                 //i=i+1;
             }
+
+            final JButton btnanadir=new JButton("Añadir artículo");
+            btnanadir.setBounds(0,0,100,50);
+            JPanel1.add(btnanadir);
+
+            final JTextArea platosseleccionados=new JTextArea(20,25);
+
+            List<Integer> precioscompra=new ArrayList<>();
+
+            btnanadir.addActionListener(actionEvent -> {
+                String infoart=JOptionPane.showInputDialog(null, "Inserte 'id producto,cantidad'");
+                String[] infoarticulo= infoart.split(",");
+                String idproducto= infoarticulo[0];
+                String cantidad= infoarticulo[1];
+
+                Map<Integer, Integer> listacompra=new HashMap<>();
+                listacompra.put(Integer.parseInt(idproducto),Integer.parseInt(cantidad));
+
+
+                int preciop=0;
+
+                //ArrayList precioart= new ArrayList();
+                int precioart=0;
+                System.out.println(precioart);
+
+                //String pizza="pizza";
+                try(PreparedStatement pst=con.prepareStatement("SELECT precio FROM menu WHERE idrest = 1 AND idmenu = "+Integer.parseInt(idproducto));
+                    ResultSet rs=pst.executeQuery()){
+                    while (rs.next()){
+                        precioart=rs.getInt(1);
+                        System.out.println(precioart);
+                    }
+                } catch (SQLException ex){
+                    System.out.println(ex.getMessage());
+                    System.out.println("No se encontró el precio del artículo");
+                }
+                System.out.println(precioart);
+                preciop=Integer.parseInt(cantidad)*precioart;
+
+                String nombreart=null;
+                try(PreparedStatement pst=con.prepareStatement("SELECT producto FROM menu WHERE idrest = 1 AND idmenu = "+Integer.parseInt(idproducto));
+                    ResultSet rs=pst.executeQuery()){
+                    while (rs.next()){
+                        nombreart=rs.getString(1);
+                        System.out.println(nombreart);
+                    }
+                } catch (SQLException ex){
+                    System.out.println(ex.getMessage());
+                    System.out.println("No se encontró el nombre del artículo");
+                }
+                System.out.println(nombreart);
+
+                platosseleccionados.append(cantidad+" x "+nombreart+" = "+preciop);
+                platosseleccionados.append("\n");
+                JPanel1.add(platosseleccionados);
+
+                precioscompra.add(preciop);
+                System.out.println(precioscompra);
+                });
+
+            JButton btnPedir=new JButton("Pedir");
+            btnPedir.setBounds(0, 50, 100, 50);
+            JPanel1.add(btnPedir);
+
+            btnPedir.addActionListener(e1->{
+                int dialogbutton=JOptionPane.YES_NO_OPTION;
+                JOptionPane.showConfirmDialog(null, "Seguro que deseas proceder a realizar tu pedido?", "ATENCIÓN", dialogbutton);
+                if(dialogbutton==JOptionPane.YES_OPTION) {
+                    JFrame frameDelivery = new JFrame("ENVÍOS");
+                    frameDelivery.setSize(800, 900);
+                    frameDelivery.setLocationRelativeTo(null);
+                    //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+                    frameDelivery.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    //JPanel panelHome = new PanelRestaurante();
+                    JPanel panelDelivery = new PanelDeliveryRestaurante();
+                    //placeComponentsAjustes(panelAj);
+                    frameDelivery.add(panelDelivery);
+                    frameDelivery.setVisible(true);
+                    frameDelivery.setResizable(true);
+
+                if (dialogbutton == JOptionPane.NO_OPTION) { //por que en este caso también se me va al panel de envio??
+                        remove(dialogbutton);
+                        System.exit(0);
+                    }
+                }
+            });
+
+            //no se que le pasa a las croquetas que se han vuelto locas
 
             //PARA SELECCIONAR INSERTAR IDMENU Y CANTIDAD Y HACER UN HASHMAP, REALIZAR EL CÁLCULO PARA CALCULAR EL PRECIO
             //AÑADIR UN JBUTTON PARA AÑADIR ARTICULO QUE ME ABRA UN JOPTIONPANE DONDE INSERTE IDMENU Y CANTIDAD

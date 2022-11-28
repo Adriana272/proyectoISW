@@ -1,6 +1,7 @@
 package icai.dtc.isw.domain;
 
 public class DeliveryGlovo extends Delivery{
+
     private static float GASTOENVIO = 3.5F;
     private float costefinal;
     private static float ENVIOPREFERENTE = 1;
@@ -20,12 +21,26 @@ public class DeliveryGlovo extends Delivery{
     /*private static final int PRECIOMINIMOPEDIDO = 10;*/
 
 
-    public float coste(){
-        return(GASTOENVIO+ super.coste());
+    public static float coste(boolean preferencia){
+        return(GASTOENVIO+ Delivery.coste(preferencia));
 
 
     }
     public String toString(){
-        return "el servicio delivery Glovo" + "tiene un gasto de envio de " +  this.coste();
+        return "el servicio delivery Glovo" + "tiene un gasto de envio de " +  this.coste(preferencia);
     }
+
+    public float calcularTiempo(){
+        return(calcularTiempo(preferencia)-10);
+
+    }
+
+    public void getTiempo(){
+        System.out.println(calcularTiempo());
+    }
+
+
+
+
+
 }
