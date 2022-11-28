@@ -1,23 +1,15 @@
 package icai.dtc.isw.ui;
 
-import icai.dtc.isw.client.Client;
 import icai.dtc.isw.dao.ConnectionDAO;
-import icai.dtc.isw.domain.Customer;
 import icai.dtc.isw.domain.Restaurante;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-
-import static icai.dtc.isw.ui.PlaceComponentsInicio.recuperarInformacion;
 
 public class PanelRestaurante extends JPanel{
     private JButton btnAsiatico = new JButton();
@@ -148,13 +140,30 @@ public class PanelRestaurante extends JPanel{
             }
             System.out.println(restaurantes);
             JFrame frameHamburguesa = new JFrame("RESTAURANTES HAMBURGUESA");
-            frameHamburguesa.setSize(750, 300);
+            frameHamburguesa.setSize(750, 400);
             frameHamburguesa.setLocationRelativeTo(null);
             //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
             frameHamburguesa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             //JPanel panel = new JPanel();
             //framePerfil.add(panel);
             JPanel JHamburguesa = new JPanel();
+            /*Iterator it=restaurantes.iterator();
+            int i=0;
+            while (it.hasNext()){
+                i=i+1;
+                System.out.println(it.next());
+                System.out.println("valor i: "+i);
+               // String nombre=(it.next()).toString();
+                String iStr= String.valueOf(i);
+                System.out.println("valor iStr: "+iStr);
+                JButton btnRest= new JButton();
+                btnRest.setText("Restaurante"+iStr);
+                JHamburguesa.add(btnRest);
+                btnRest.addActionListener(e ->{
+                    JPanel ("Menu "+iStr)=new JPanel("Menu Restaurante "+iStr);
+                    frameHamburguesa.add(("Menu "+iStr));
+                });
+            }*/
             final  JTextArea hamburguesaTextField = new JTextArea(20,20);
             hamburguesaTextField.append(restaurantes.toString());
             //userTextPerfil.setBounds(260, 270, 340, 40);
@@ -163,9 +172,27 @@ public class PanelRestaurante extends JPanel{
             frameHamburguesa.add(JHamburguesa);
             frameHamburguesa.setVisible(true);
             frameHamburguesa.setResizable(true);
+
+            JButton btnMenu=new JButton();
+            btnMenu.setText("MENUS");
+            JHamburguesa.add(btnMenu);
+            btnMenu.addActionListener(actionEvent-> {
+                JFrame frameMH = new JFrame("Menus Restaurantes Hamburguesa");
+                frameMH.setSize(900, 700);
+                frameMH.setLocationRelativeTo(null);
+                //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+                frameMH.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                //JPanel panel = new JPanel();
+                //framePerfil.add(panel);
+                JPanel JMenuHamb = new PanelMenuHamburguesa();
+                frameMH.add(JMenuHamb);
+                frameMH.setVisible(true);
+                frameMH.setResizable(true);
+            });
+
         });
 
-
+        /*
         btnEspaniol.addActionListener(e-> {
             String espaniol= "espaniol";
             ArrayList<Restaurante> restaurante = jVentanaMadrimentate.getgRestaurantes().buscarRestauranteTipo(espaniol);
@@ -179,7 +206,7 @@ public class PanelRestaurante extends JPanel{
             }
 
 
-        });
+        });*/
 
         btnEspaniol.addActionListener(e -> {
             ArrayList<Restaurante> restaurantes= new ArrayList<>();

@@ -75,7 +75,7 @@ public class JVentana extends javax.swing.JFrame {
         JFrame frame = new JFrame("MADRIMENTATE");
         frame.setSize(800, 900);
         //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
-        frame.setBackground(Color.darkGray);
+        frame.setBackground(Color.black);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         //JPanel panel = new JPanel();

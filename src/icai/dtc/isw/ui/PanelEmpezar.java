@@ -51,7 +51,7 @@ public class PanelEmpezar extends JPanel implements Serializable {
             JFrame frameIni = new JFrame("Inicio");
             frameIni.setSize(800, 900);
             //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
-            frameIni.setBackground(Color.darkGray);
+            frameIni.setBackground(Color.white);
             frameIni.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frameIni.setLocationRelativeTo(null);
             //JPanel panel = new JPanel();

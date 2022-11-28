@@ -15,40 +15,43 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
 
 
      public PlaceComponentsPerfil() {
-
+        this.setLayout(null);
+        this.setBackground(Color.white);
+        /*
         JPanel panelperfilcentro = new JPanel();
         panelperfilcentro.toString();
 
-        panelperfilcentro.setLayout(new BoxLayout(panelperfilcentro, BoxLayout.Y_AXIS));
+        //panelperfilcentro.setLayout(new BoxLayout(panelperfilcentro));
         JPanel panelperfilsur= new JPanel(new GridLayout());
         panelperfilsur.setLayout(new java.awt.GridLayout(1,3));
 
         JPanel panelperfilnorte = new JPanel();
         panelperfilnorte.toString();
+        */
 
 
         final JLabel idLabelPerfil = new JLabel("Id:");
-        idLabelPerfil.setBounds(50, 220, 160, 40);
-        panelperfilcentro.add(idLabelPerfil);
+        idLabelPerfil.setBounds(150, 350, 160, 40);
+        this.add(idLabelPerfil);
 
         final JTextField idTextPerfil = new JTextField(20);
-        //idTextPerfil.setBounds(260, 220, 340, 40);
-         int idperfil = recuperarInformacion().getId();
+        idTextPerfil.setBounds(320, 350, 340, 40);
+        int idperfil = recuperarInformacion().getId();
         idTextPerfil.setText(Integer.toString(idperfil));
         idTextPerfil.setEditable(false);
-        panelperfilcentro.add(idTextPerfil);
+        this.add(idTextPerfil);
 
 
         final  JLabel userLabelPerfil = new JLabel("Nombre:");
-        //userLabelPerfil.setBounds(50, 270, 160, 40);
+        userLabelPerfil.setBounds(150, 400, 160, 40);
         //passwordLabel.setResizable(true);
-        panelperfilcentro.add(userLabelPerfil);
+        this.add(userLabelPerfil);
 
         final  JTextField userTextPerfil = new JTextField(20);
-        //userTextPerfil.setBounds(260, 270, 340, 40);
+        userTextPerfil.setBounds(320, 400, 340, 40);
         userTextPerfil.setText(recuperarInformacion().getPw());
         userTextPerfil.setEditable(false);
-        panelperfilcentro.add(userTextPerfil);
+        this.add(userTextPerfil);
 
 
         //insertar imagen
@@ -56,21 +59,21 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
         ImageIcon Imagen = new ImageIcon("src/main/resources/images/perfil.png");
         img.setIcon(Imagen);
         img.setSize(160,160);
-        //img.setLocation(245,25);
+        img.setLocation(320,150);
         img.setVisible(true);
-        panelperfilnorte.add(img);
+        this.add(img);
 
         //insertar botones home, reservas, pedidos, configuracion.
          final JButton btnHome = new JButton("Home");
-         //btnConfig.setBounds(245, 220, 160, 40);
+         btnHome.setBounds(300, 510, 200, 60);
          ImageIcon iconohome=new ImageIcon("src/main/resources/images/home.png");
          btnHome.setIcon(iconohome);
-         panelperfilsur.add(btnHome);
+         this.add(btnHome);
 
          //Action listener boton home
          btnHome.addActionListener(actionEvent -> {
              JFrame frameHome = new JFrame("HOME");
-             frameHome.setSize(650, 600);
+             frameHome.setSize(800, 900);
              frameHome.setLocationRelativeTo(null);
              //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
              frameHome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,16 +84,17 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
              frameHome.setResizable(true);
 
          });
+
         final JButton btnReservas = new JButton("Mis Reservas");
-        //btnReservas.setBounds(245, 220, 160, 40);
+        btnReservas.setBounds(300, 580, 200, 60);
         ImageIcon iconoreservas=new ImageIcon("src/main/resources/images/reserva.png");
         btnReservas.setIcon(iconoreservas);
-        panelperfilsur.add(btnReservas);
+        this.add(btnReservas);
 
         //Action listener boton reservas
         btnReservas.addActionListener(actionEvent -> {
             JFrame frameRes = new JFrame("RESERVAS");
-            frameRes.setSize(650, 300);
+            frameRes.setSize(800, 900);
             frameRes.setLocationRelativeTo(null);
             //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
             frameRes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -103,15 +107,15 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
         });
 
         final JButton btnPedidos = new JButton("Mis Pedidos");
-        //btnPedidos.setBounds(245, 220, 160, 40);
+        btnPedidos.setBounds(300, 650, 200, 60);
         ImageIcon iconopedidos=new ImageIcon("src/main/resources/images/pedido.png");
         btnPedidos.setIcon(iconopedidos);
-        panelperfilsur.add(btnPedidos);
+        this.add(btnPedidos);
 
         //Action listener boton pedidos
         btnPedidos.addActionListener(actionEvent -> {
             JFrame framePed = new JFrame("PEDIDOS");
-            framePed.setSize(650, 300);
+            framePed.setSize(800, 900);
             framePed.setLocationRelativeTo(null);
             //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
             framePed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -124,10 +128,10 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
         });
 
         final JButton btnAjustes = new JButton("Ajustes");
-        //btnConfig.setBounds(245, 220, 160, 40);
+        btnAjustes.setBounds(300, 720, 200, 60);
         ImageIcon iconoajustes=new ImageIcon("src/main/resources/images/ajustes.png");
         btnAjustes.setIcon(iconoajustes);
-        panelperfilsur.add(btnAjustes);
+        this.add(btnAjustes);
 
         //Action listener boton ajustes
         btnAjustes.addActionListener(actionEvent -> {
@@ -143,8 +147,10 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
 
         });
 
+        /*
         this.add(panelperfilnorte, BorderLayout.NORTH);
         this.add(panelperfilcentro, BorderLayout.CENTER);
         this.add(panelperfilsur, BorderLayout.SOUTH);
+        */
    }
 }

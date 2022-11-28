@@ -21,28 +21,40 @@ public class PlaceComponentsAjustes extends JPanel implements Serializable {
     public PlaceComponentsAjustes() {
 
         this.setLayout(null);
+        this.setBackground(Color.white);
+
+        //insertar imagen
+        JLabel imgSet = new JLabel(" ");
+        ImageIcon ImagenSet = new ImageIcon("src/main/resources/images/ajustesiconogrande.png");
+        imgSet.setIcon(ImagenSet);
+        imgSet.setSize(160, 160);
+        imgSet.setLocation(320, 50);
+        imgSet.setVisible(true);
+        this.add(imgSet);
 
         //insertar boton delete
         final JButton btnDelete = new JButton("Eliminar cuenta");
-        btnDelete.setBounds(245, 220, 160, 40);
+        btnDelete.setBounds(300, 300, 200, 70);
+        ImageIcon iconodelete=new ImageIcon("src/main/resources/images/trash.png");
+        btnDelete.setIcon(iconodelete);
         this.add(btnDelete);
 
         btnDelete.addActionListener(actionEvent -> {
             int dialogButton = JOptionPane.showConfirmDialog(null, "Está seguro de que desea eliminar su cuenta?", "Alerta!", JOptionPane.YES_NO_OPTION);
             if (dialogButton == JOptionPane.YES_OPTION) {
 
-                String userDel = JOptionPane.showInputDialog("Introduzca 'id,contraseña (nombre en este caso)': ");
-                int idUserDel = Integer.parseInt(userDel.split(",")[0]);
-                String pwUserDel = userDel.split(",")[1];
-                System.out.println(userDel);
-                System.out.println(idUserDel);
-                System.out.println(pwUserDel);
+                String pwDel = JOptionPane.showInputDialog("Introduzca su contraseña (nombre en este caso)': ");
+                //int idUserDel = Integer.parseInt(userDel.split(",")[0]);
+                //String pwUserDel = userDel.split(",")[1];
+                System.out.println(pwDel);
+                //System.out.println(idUserDel);
+                //System.out.println(pwUserDel);
                 Connection con = ConnectionDAO.getInstance().getConnection();
 
-                try (PreparedStatement pst = con.prepareStatement("DELETE FROM usuarios WHERE id =" + idUserDel+" password = "+pwUserDel);
+                try (PreparedStatement pst = con.prepareStatement("DELETE FROM usuarios WHERE password = '"+pwDel+"'");
                      ResultSet rs = pst.executeQuery()) {
                     while (rs.next()) {
-                        System.out.println(userDel);
+                        System.out.println(pwDel);
                     }
                     JOptionPane.showMessageDialog(null, "Usuario eliminado con éxito!");
                     System.exit(1);
@@ -54,9 +66,11 @@ public class PlaceComponentsAjustes extends JPanel implements Serializable {
             }
         });
 
-        //insertar boton registro
+        //insertar boton edit
         final JButton btnEdit = new JButton("Editar datos");
-        btnEdit.setBounds(265, 220, 160, 40);
+        btnEdit.setBounds(300, 400, 200, 70);
+        ImageIcon iconoedit=new ImageIcon("src/main/resources/images/edit.png");
+        btnEdit.setIcon(iconoedit);
         this.add(btnEdit);
 
         btnEdit.addActionListener(actionEvent -> {
