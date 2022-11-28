@@ -77,7 +77,8 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
              frameHome.setLocationRelativeTo(null);
              //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
              frameHome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-             JPanel panelHome = new PanelRestaurante();
+             //JPanel panelHome = new PanelRestaurante();
+             JPanel panelHome = new PanelesRestaurantes();
              //placeComponentsAjustes(panelAj);
              frameHome.add(panelHome);
              frameHome.setVisible(true);
