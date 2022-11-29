@@ -23,7 +23,7 @@ public class JVentana extends javax.swing.JFrame {
 
     private static String IdUsuario;
 
-    private GestorBD gRestaurantes = new GestorBD(new CustomerDAO(ConnectionDAO.getInstance().getConnection()));
+    private static GestorBD gRestaurantes = new GestorBD(new CustomerDAO(ConnectionDAO.getInstance().getConnection()));
 
     private PanelRestaurante panelRestaurante;
     private PanelTipoRestaurante pnlTipo;
@@ -109,7 +109,7 @@ public class JVentana extends javax.swing.JFrame {
         pnlTipo.setVisible(true);
 
     }
-    public GestorBD getgRestaurantes(){
+    public static GestorBD getgRestaurantes(){
         return gRestaurantes;
     }
 }

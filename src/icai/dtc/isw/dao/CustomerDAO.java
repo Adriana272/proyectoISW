@@ -57,7 +57,12 @@ public class CustomerDAO {
 	public static ArrayList<Comida> getComida(int idrest){
 		Connection con=ConnectionDAO.getInstance().getConnection();
 		ArrayList<Comida> comidas = new ArrayList<>();
-
+		ArrayList idmenu= new ArrayList();
+		System.out.println(idmenu);
+		ArrayList productos= new ArrayList();
+		System.out.println(productos);
+		ArrayList precio= new ArrayList();
+		System.out.println(precio);
 		try (PreparedStatement pst = con.prepareStatement("SELECT idmenu , producto,precio FROM menu WHERE idrest="+ idrest);
 			 ResultSet rs = pst.executeQuery()
 		)
@@ -66,6 +71,12 @@ public class CustomerDAO {
 
 			while (rs.next()) {
 				comidas.add(new Comida(rs.getInt(1),rs.getInt(2),rs.getString(3), rs.getInt(4)));
+				idmenu.add(rs.getInt(2));
+				productos.add(rs.getString(3));
+				precio.add(rs.getInt(4));
+				System.out.println(idmenu);
+				System.out.println(productos);
+				System.out.println(precio);
 			}
 
 		} catch (SQLException ex) {
@@ -75,6 +86,131 @@ public class CustomerDAO {
 		return comidas;
 		//return new Customer("1","Atilano");
 	}
+
+	public static ArrayList<Integer> getIdsComida(int idrest){
+		Connection con=ConnectionDAO.getInstance().getConnection();
+		ArrayList<Integer> precioComida = new ArrayList<>();
+
+		System.out.println(precioComida);
+		try (PreparedStatement pst = con.prepareStatement("SELECT idmenu FROM menu WHERE idrest="+ idrest);
+			 ResultSet rs = pst.executeQuery()
+		)
+
+		{
+
+			while (rs.next()) {
+				precioComida.add(rs.getInt(1));
+
+			}
+
+		} catch (SQLException ex) {
+
+			System.out.println(ex.getMessage());
+		}
+		return precioComida;
+		//return new Customer("1","Atilano");
+	}
+
+
+	public static ArrayList<String> getNombreComida(int idrest){
+		Connection con=ConnectionDAO.getInstance().getConnection();
+		ArrayList<String> nombresComida = new ArrayList<>();
+
+		System.out.println(nombresComida);
+		try (PreparedStatement pst = con.prepareStatement("SELECT producto FROM menu WHERE idrest="+ idrest);
+			 ResultSet rs = pst.executeQuery()
+		)
+
+		{
+
+			while (rs.next()) {
+				nombresComida.add(rs.getString(1));
+
+			}
+
+		} catch (SQLException ex) {
+
+			System.out.println(ex.getMessage());
+		}
+		return nombresComida;
+		//return new Customer("1","Atilano");
+	}
+
+	public static ArrayList<Integer> getPreciosComida(int idrest){
+		Connection con=ConnectionDAO.getInstance().getConnection();
+		ArrayList<Integer> preciosComida = new ArrayList<>();
+
+		System.out.println(preciosComida);
+		try (PreparedStatement pst = con.prepareStatement("SELECT precio FROM menu WHERE idrest="+ idrest);
+			 ResultSet rs = pst.executeQuery()
+		)
+
+		{
+
+			while (rs.next()) {
+				preciosComida.add(rs.getInt(1));
+
+			}
+
+		} catch (SQLException ex) {
+
+			System.out.println(ex.getMessage());
+		}
+		return preciosComida;
+		//return new Customer("1","Atilano");
+	}
+
+
+	public static Integer getPrecioArticulo(int idrest, int idmenu){
+		Connection con=ConnectionDAO.getInstance().getConnection();
+		int precioArticulo = 0;
+
+		System.out.println(precioArticulo);
+		try (PreparedStatement pst = con.prepareStatement("SELECT precio FROM menu WHERE idrest="+ idrest+" AND idmenu="+idmenu);
+			 ResultSet rs = pst.executeQuery()
+		)
+
+		{
+
+			while (rs.next()) {
+				precioArticulo=rs.getInt(1);
+
+			}
+
+		} catch (SQLException ex) {
+
+			System.out.println(ex.getMessage());
+		}
+		return precioArticulo;
+		//return new Customer("1","Atilano");
+	}
+
+
+	public static String getNombreArticulo(int idrest, int idmenu){
+		Connection con=ConnectionDAO.getInstance().getConnection();
+		String nombreArticulo = null;
+
+		System.out.println(nombreArticulo);
+		try (PreparedStatement pst = con.prepareStatement("SELECT producto FROM menu WHERE idrest="+ idrest+" AND idmenu="+idmenu);
+			 ResultSet rs = pst.executeQuery()
+		)
+
+		{
+
+			while (rs.next()) {
+				nombreArticulo=rs.getString(1);
+
+			}
+
+		} catch (SQLException ex) {
+
+			System.out.println(ex.getMessage());
+		}
+		return nombreArticulo;
+		//return new Customer("1","Atilano");
+	}
+
+
 	public static ArrayList<Comida> fetchComidas(){
 		ArrayList<Comida> comidas = new ArrayList<>();
 		Connection con=ConnectionDAO.getInstance().getConnection();
