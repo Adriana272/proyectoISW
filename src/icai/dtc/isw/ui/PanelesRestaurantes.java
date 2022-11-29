@@ -60,7 +60,7 @@ public class PanelesRestaurantes  extends JPanel implements Serializable {
                 while (rs.next()){
                     idmenu.add(rs.getInt(1));
                     productos.add(rs.getString(2));
-                    precio.add(rs.getInt(2));
+                    precio.add(rs.getInt(3));
                     System.out.println(idmenu);
                     System.out.println(productos);
                     System.out.println(precio);
@@ -71,6 +71,10 @@ public class PanelesRestaurantes  extends JPanel implements Serializable {
                 System.out.println("No se encontraron restaurantes de hamburguesa");
             }
             System.out.println(idmenu);
+            System.out.println(productos);
+            System.out.println(precio);
+
+            /*
             try(PreparedStatement pst=con.prepareStatement("SELECT idmenu FROM menu WHERE idrest = 1");
                 ResultSet rs=pst.executeQuery()){
                 while (rs.next()){
@@ -113,6 +117,7 @@ public class PanelesRestaurantes  extends JPanel implements Serializable {
                 System.out.println("No se encontró el menu del restaurantes");
             }
             System.out.println(idmenu);
+            */
 
             JFrame frame1 = new JFrame("CARTA RESTAURANTE RAZA MADRID");
             frame1.setSize(750, 400);
@@ -196,8 +201,8 @@ public class PanelesRestaurantes  extends JPanel implements Serializable {
             JPanel1.add(btnPedir);
 
             btnPedir.addActionListener(e1->{
-                int dialogbutton=JOptionPane.YES_NO_OPTION;
-                JOptionPane.showConfirmDialog(null, "Seguro que deseas proceder a realizar tu pedido?", "ATENCIÓN", dialogbutton);
+
+                int dialogbutton=JOptionPane.showConfirmDialog(null, "Seguro que deseas proceder a realizar tu pedido?", "ATENCIÓN", JOptionPane.YES_NO_OPTION);
                 if(dialogbutton==JOptionPane.YES_OPTION) {
                     JFrame frameDelivery = new JFrame("ENVÍOS");
                     frameDelivery.setSize(800, 900);
@@ -210,11 +215,11 @@ public class PanelesRestaurantes  extends JPanel implements Serializable {
                     frameDelivery.add(panelDelivery);
                     frameDelivery.setVisible(true);
                     frameDelivery.setResizable(true);
-
+                }
                 if (dialogbutton == JOptionPane.NO_OPTION) { //por que en este caso también se me va al panel de envio??
                         remove(dialogbutton);
-                        System.exit(0);
-                    }
+                        //System.exit(0);
+
                 }
             });
 
