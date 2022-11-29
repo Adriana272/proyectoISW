@@ -1,15 +1,17 @@
 package icai.dtc.isw.domain;
 
-public class Comida {
+public  class Comida {
     private int precio;
 
     private String descripcion;
-    private String intolerancias;
+    private int idrest;
+    private int idmenu;
 
-    public Comida(int precio, String descripcion, String intolerancias) {
+    public Comida(int idrest,int idmenu, String descripcion, int precio) {
+        this.idrest = idrest;
+        this.idmenu = idmenu;
         this.precio = precio;
         this.descripcion = descripcion;
-        this.intolerancias = intolerancias;
     }
 
     public int getPrecio() {
@@ -20,7 +22,14 @@ public class Comida {
         return descripcion;
     }
 
-    public String getIntolerancias() {
-        return intolerancias;
+    public int getIDRest(){
+        return idrest;
+    }
+    public int getIDMenu(){return idmenu;}
+
+
+    @Override
+    public String toString(){
+        return ("IdRestaurante: "+ getIDRest()+ ", IdMenu: "+getIDMenu()+", TipoComida: "+getDescripcion()+" y precio: "+getPrecio()+".\n");
     }
 }

@@ -3,7 +3,8 @@ package icai.dtc.isw.domain;
 import java.util.Arrays;
 import java.util.List;
 
-public class Restaurante {
+public  class Restaurante {
+
     private String nombre;
     /*enum TIPOS{
          PIZZA, ASIATICA, BURGUER, ESPANOLA, ITALIAN, CASA, VASCO, ITALIANO, ALTACOCINA
@@ -16,7 +17,7 @@ public class Restaurante {
     private boolean availabilityRestauran;
 
 
-    private String direccion;
+    private String calle;
     private int id;
     private int puntacion;
     private String opinion;
@@ -24,20 +25,20 @@ public class Restaurante {
     private boolean servicioDelivery;
     private Comida comida[];
     private int elementos;
-    private String tipo;
+    private String tipoComida;
 
-    public Restaurante(int id, String nombre, String direccion, String tipo){
+    public Restaurante(int id, String nombre, String calle, String tipoComida){
         this.id = id;
         this.nombre = nombre;
-        this.direccion = direccion;
-        this.tipo = tipo;
+        this.calle = calle;
+        this.tipoComida = tipoComida;
 
     }
 
 
-    public Restaurante(int id, String nombre, String direccion, int puntacion, String opinion, float precioMedio, boolean servicioDelivery, Comida[] comida) {
+    public Restaurante(int id, String nombre, String calle, int puntacion, String opinion, float precioMedio, boolean servicioDelivery, Comida[] comida) {
         this.nombre = nombre;
-        this.direccion = direccion;
+        this.calle = calle;
         this.puntacion = puntacion;
         this.opinion = opinion;
         this.precioMedio = precioMedio;
@@ -52,7 +53,7 @@ public class Restaurante {
         for(int i=0; i<size;i++){
             if(comida[i]!=null){
 
-                System.out.print("\n n" + (i+1)+ "\n \t"+comida[i].getDescripcion()+".........."+comida[i].getPrecio()+comida[i].getIntolerancias());
+                System.out.print("\n n" + (i+1)+ "\n \t"+comida[i].getDescripcion()+".........."+comida[i].getPrecio());
 
 
             }
@@ -73,8 +74,8 @@ public class Restaurante {
         return nombre;
     }
 
-    public String getTipo(){
-        return tipo;
+    public String getTipoComida(){
+        return tipoComida;
     }
 
     public static String[] getTiposrestaurante() {
@@ -93,8 +94,8 @@ public class Restaurante {
         return availabilityRestauran;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getCalle() {
+        return calle;
     }
 
     public int getId() {
@@ -127,6 +128,6 @@ public class Restaurante {
 
     @Override
     public String toString(){
-        return ("Restaurante: "+getNombre()+", id: "+getId()+", dirección: "+getDireccion()+" y tipo de comida: "+getTipo()+".\n");
+        return ("Restaurante: "+getNombre()+", id: "+getId()+", dirección: "+getCalle()+" y tipo de comida: "+getTipoComida()+".\n");
     }
 }

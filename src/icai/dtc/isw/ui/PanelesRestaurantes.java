@@ -1,15 +1,18 @@
 package icai.dtc.isw.ui;
 
 import icai.dtc.isw.dao.ConnectionDAO;
+import icai.dtc.isw.domain.Comida;
 import icai.dtc.isw.domain.Restaurante;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
+import java.util.List;
 
 public class PanelesRestaurantes  extends JPanel implements Serializable {
 
@@ -196,6 +199,8 @@ public class PanelesRestaurantes  extends JPanel implements Serializable {
                 System.out.println(precioscompra);
                 });
 
+
+
             JButton btnPedir=new JButton("Pedir");
             btnPedir.setBounds(0, 50, 100, 50);
             JPanel1.add(btnPedir);
@@ -292,4 +297,23 @@ public class PanelesRestaurantes  extends JPanel implements Serializable {
             btnSumo.setBounds(300, 750, 200, 50);
             this.add(btnSumo);
     }
-}
+    /*
+    public void mostrarMenu(int idRest){
+        ArrayList<Comida> menu;
+        menu = jVentanaMadrimentate.getgRestaurantes().buscarIdRest(idRest);
+        for(int i=0;i<menu.size();i++){
+            JPanel pnlProducto = new JPanel(new FlowLayout());
+            ArrayList<Comida> ccc;
+            ccc = jVentanaMadrimentate.getgRestaurantes().buscarIdMenu(idRest,i);
+            System.out.println(ccc);
+            JTextField txtnumero = new JTextField();
+
+    */
+
+
+
+
+        }
+
+    //}
+//}
