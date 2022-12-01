@@ -7,6 +7,7 @@ import icai.dtc.isw.domain.Restaurante;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,13 +18,19 @@ import java.util.List;
 
 public class PanelesRestaurantes  extends JPanel implements Serializable {
 
+    //private Image imagen=new ImageIcon(getClass().getResource("fondopantallamenu.png")).getImage();
+
+    public BufferedImage image;
+
     public PanelesRestaurantes() {
 
         this.setLayout(null);
 
-
-        final JButton btnRM = new JButton("RAZA MADRID");
-        btnRM.setBounds(300, 50, 200, 50);
+        final JButton btnRM = new JButton();
+        btnRM.setBounds(250, 50, 300, 60);
+        btnRM.setBackground(Color.darkGray);
+        ImageIcon iconoRM=new ImageIcon("src/main/resources/images/LA-RAZA-LOGO.png");
+        btnRM.setIcon(iconoRM);
         this.add(btnRM);
 
         btnRM.addActionListener(e -> {
@@ -61,9 +68,6 @@ public class PanelesRestaurantes  extends JPanel implements Serializable {
              */
 
 
-
-
-
             ArrayList idmenulist=new ArrayList();
             idmenulist= CustomerDAO.getIdsComida(1);
             System.out.println("lista ids:");
@@ -88,23 +92,28 @@ public class PanelesRestaurantes  extends JPanel implements Serializable {
 
             JFrame frame1 = new JFrame("CARTA RESTAURANTE RAZA MADRID");
             frame1.setSize(800, 900);
+            frame1.setBackground(Color.gray);
             frame1.setLocationRelativeTo(null);
             //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
             frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             JPanel JPanel1 = new JPanel();
+            JPanel1.setBackground(Color.gray);
 
             //insertar imagen
-            /*JLabel imgFondoM = new JLabel(" ");
-            ImageIcon ImagenBGM = new ImageIcon("src/main/resources/images/fondopantallamenu.png");
+            JLabel imgFondoM = new JLabel(" ");
+            ImageIcon ImagenBGM = new ImageIcon("src/main/resources/images/razamadrid.jpg");
             imgFondoM.setIcon(ImagenBGM);
-            imgFondoM.setSize(800, 900);
+            imgFondoM.setSize(800, 200);
             imgFondoM.setLocation(0, 0);
             imgFondoM.setVisible(true);
-            JPanel1.add(imgFondoM);*/
+            JPanel1.add(imgFondoM);
+
 
             final  JTextArea platosTextField = new JTextArea();
             platosTextField.setBounds(20,20,20,25);
+            //platosTextField.setFont(Font.getFont(Font.SANS_SERIF));
+            platosTextField.setBackground(Color.lightGray);
             //Iterator it1= idmenu.iterator();
             for (int i =0; i<(idmenulist.toArray().length-1); i++){
                 platosTextField.append(((idmenulist.toArray())[i]).toString()+". ");
@@ -113,13 +122,17 @@ public class PanelesRestaurantes  extends JPanel implements Serializable {
                 platosTextField.append("\n");
                 //i=i+1;
             }
+            JPanel1.add(platosTextField);
 
             final JButton btnanadir=new JButton("Añadir artículo");
-            btnanadir.setBounds(450,300,100,50);
+            btnanadir.setBounds(450,300,100,55);
+            ImageIcon iconoadd=new ImageIcon("src/main/resources/images/anadircestaicon.png");
+            btnanadir.setIcon(iconoadd);
             JPanel1.add(btnanadir);
 
             final JTextArea platosseleccionados=new JTextArea();
             platosseleccionados.setBounds(45,20,20,25);
+            platosseleccionados.setBackground(Color.lightGray);
             JPanel1.add(platosseleccionados);
             platosseleccionados.setVisible(true);
 
@@ -177,7 +190,9 @@ public class PanelesRestaurantes  extends JPanel implements Serializable {
 
 
             JButton btnPedir=new JButton("Pedir");
-            btnPedir.setBounds(250, 300, 100, 50);
+            btnPedir.setBounds(250, 300, 100, 55);
+            ImageIcon iconoorder=new ImageIcon("src/main/resources/images/iconopedir.png");
+            btnPedir.setIcon(iconoorder);
             JPanel1.add(btnPedir);
 
             btnPedir.addActionListener(e1->{
@@ -204,7 +219,7 @@ public class PanelesRestaurantes  extends JPanel implements Serializable {
             });
 
             platosTextField.setEditable(false);
-            JPanel1.add(platosTextField);
+            //JPanel1.add(platosTextField);
             frame1.add(JPanel1);
             frame1.setVisible(true);
             frame1.setResizable(true);
@@ -212,48 +227,77 @@ public class PanelesRestaurantes  extends JPanel implements Serializable {
             });
 
 
-
             JButton btnNAP = new JButton("NAP");
-            btnNAP.setBounds(300, 150, 200, 50);
+            btnNAP.setBounds(250, 150, 300, 60);
+            btnNAP.setBackground(Color.white);
+            ImageIcon iconoNAP=new ImageIcon("src/main/resources/images/naplogo.png");
+            btnNAP.setIcon(iconoNAP);
             this.add(btnNAP);
 
 
             JButton btnMU = new JButton("MU!");
-            btnMU.setBounds(300, 250, 200, 50);
+            btnMU.setBounds(250, 250, 300, 60);
+            btnMU.setBackground(Color.darkGray);
+            ImageIcon iconoMU=new ImageIcon("src/main/resources/images/logo_muu.png");
+            btnMU.setIcon(iconoMU);
             this.add(btnMU);
 
-
-            JButton btnVB = new JButton("VIVA BURGUER");
-            btnVB.setBounds(300, 350, 200, 50);
-            this.add(btnVB);
-
-
             JButton btnLB = new JButton("LA BARRACA");
-            btnLB.setBounds(300, 450, 200, 50);
+            btnLB.setBounds(250, 350, 300, 60);
+            btnLB.setBackground(Color.white);
+            ImageIcon iconoLB=new ImageIcon("src/main/resources/images/Logo-La-Barraca.png");
+            btnLB.setIcon(iconoLB);
             this.add(btnLB);
 
 
-            JButton btnLP = new JButton("LA PAELLA");
-            btnLP.setBounds(300, 550, 200, 50);
+            JButton btnVB = new JButton("VIVA BURGUER");
+            btnVB.setBounds(250, 450, 300, 60);
+            btnVB.setBackground(Color.darkGray);
+            btnVB.setForeground(Color.white);
+            ImageIcon iconoVB=new ImageIcon("src/main/resources/images/vivaburguer.png");
+            btnVB.setIcon(iconoVB);
+            this.add(btnVB);
+
+
+
+            JButton btnLP = new JButton();
+            btnLP.setBounds(250, 550, 300, 60);
+            btnLP.setBackground(Color.white);
+            ImageIcon iconoLP=new ImageIcon("src/main/resources/images/paella-de-la-reina.png");
+            btnLP.setIcon(iconoLP);
             this.add(btnLP);
 
+            JButton btnSumo = new JButton("SUMO");
+            btnSumo.setBounds(250, 650, 300, 60);
+            btnSumo.setBackground(Color.darkGray);
+            btnSumo.setForeground(Color.white);
+            ImageIcon iconoSumo=new ImageIcon("src/main/resources/images/sumo-logo.png");
+            btnSumo.setIcon(iconoSumo);
+            this.add(btnSumo);
 
             JButton btnFF = new JButton("FRATELLI FIGURATO");
-            btnFF.setBounds(300, 650, 200, 50);
+            btnFF.setBounds(250, 750, 300, 60);
+            btnFF.setBackground(Color.white);
+            ImageIcon iconoFF=new ImageIcon("src/main/resources/images/fratelli_figurato_logo.png");
+            btnFF.setIcon(iconoFF);
             this.add(btnFF);
 
 
-
+            /*
             JButton btnDXO= new JButton("DIVERXO");
             btnDXO.setBounds(300, 750, 200, 50);
             this.add(btnDXO);
+            */
 
-
-            JButton btnSumo = new JButton("SUMO");
-            btnSumo.setBounds(300, 750, 200, 50);
-            this.add(btnSumo);
         }
 
+        /*
+        public void paint(Graphics g){
+            g.drawImage(imagen, 0,0, getWidth(), getHeight(), this);
+            setOpaque(false);
+            super.paint(g);
+        }
+        */
         public void mostrarMenu(int idRest){
             ArrayList<Comida> menu;
             menu = JVentana.getgRestaurantes().buscarIdRest(idRest);

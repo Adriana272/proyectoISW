@@ -32,7 +32,7 @@ public class PanelEmpezar extends JPanel implements Serializable {
 
         //insertar imagen
         JLabel imgFondo = new JLabel(" ");
-        ImageIcon ImagenBG = new ImageIcon("src/main/resources/images/fondopantallanegro.png");
+        ImageIcon ImagenBG = new ImageIcon("src/main/resources/images/fondoempezardefinitivo.png");
         imgFondo.setIcon(ImagenBG);
         imgFondo.setSize(800, 900);
         imgFondo.setLocation(0, 0);
@@ -51,12 +51,13 @@ public class PanelEmpezar extends JPanel implements Serializable {
             JFrame frameIni = new JFrame("Inicio");
             frameIni.setSize(800, 900);
             //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
-            frameIni.setBackground(Color.white);
+            frameIni.setBackground(Color.lightGray);
             frameIni.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frameIni.setLocationRelativeTo(null);
             //JPanel panel = new JPanel();
             //frame.add(panel);
             JPanel inicio = new PlaceComponentsInicio();
+            //inicio.setBackground(Color.gray);
             frameIni.add(inicio);
             frameIni.setVisible(true);
             frameIni.setResizable(true);

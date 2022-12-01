@@ -1,7 +1,9 @@
 package icai.dtc.isw.ui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.Serializable;
 
 import static icai.dtc.isw.ui.PlaceComponentsInicio.recuperarInformacion;
@@ -32,6 +34,8 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
 
         final JLabel idLabelPerfil = new JLabel("Id:");
         idLabelPerfil.setBounds(150, 350, 160, 40);
+        idLabelPerfil.setBackground(Color.white);
+        idLabelPerfil.setForeground(Color.white);
         this.add(idLabelPerfil);
 
         final JTextField idTextPerfil = new JTextField(20);
@@ -44,6 +48,8 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
 
         final  JLabel userLabelPerfil = new JLabel("Nombre:");
         userLabelPerfil.setBounds(150, 400, 160, 40);
+        userLabelPerfil.setBackground(Color.white);
+        userLabelPerfil.setForeground(Color.white);
         //passwordLabel.setResizable(true);
         this.add(userLabelPerfil);
 
@@ -54,14 +60,14 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
         this.add(userTextPerfil);
 
 
-        //insertar imagen
-        JLabel img = new JLabel(" ");
-        ImageIcon Imagen = new ImageIcon("src/main/resources/images/perfil.png");
-        img.setIcon(Imagen);
-        img.setSize(160,160);
-        img.setLocation(320,150);
-        img.setVisible(true);
-        this.add(img);
+         //insertar imagen
+         JLabel imgFondoP = new JLabel(" ");
+         ImageIcon ImagenBGP = new ImageIcon("src/main/resources/images/fondopantallaperfil.png");
+         imgFondoP.setIcon(ImagenBGP);
+         imgFondoP.setSize(800, 900);
+         imgFondoP.setLocation(0, 0);
+         imgFondoP.setVisible(true);
+         this.add(imgFondoP);
 
         //insertar botones home, reservas, pedidos, configuracion.
          final JButton btnHome = new JButton("Home");
@@ -72,13 +78,22 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
 
          //Action listener boton home
          btnHome.addActionListener(actionEvent -> {
-             JFrame frameHome = new JFrame("HOME");
+             JFrame frameHome = new JFrame("RESTAURANTES");
              frameHome.setSize(800, 900);
+             frameHome.setBackground(Color.gray);
              frameHome.setLocationRelativeTo(null);
              //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
              frameHome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
              //JPanel panelHome = new PanelRestaurante();
              JPanel panelHome = new PanelesRestaurantes();
+             panelHome.setBackground(Color.orange);
+             /*
+             try{
+                 ((PanelesRestaurantes) panelHome).image= ImageIO.read(new File("src/main/resources/images/fondopantallamenu.png"));
+             }catch(Exception e){
+                 System.out.println(e);
+             }*/
+             //frameHome.setContentPane(panelHome);
              //placeComponentsAjustes(panelAj);
              frameHome.add(panelHome);
              frameHome.setVisible(true);

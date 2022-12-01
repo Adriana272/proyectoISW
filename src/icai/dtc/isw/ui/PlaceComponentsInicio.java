@@ -25,7 +25,7 @@ public class PlaceComponentsInicio extends JPanel implements Serializable {
         public PlaceComponentsInicio() {
 
             this.setLayout(null);
-
+            //this.setBackground(Color.red);
 
             final JLabel userLabelLogin = new JLabel("Id");
             userLabelLogin.setBounds(150, 350, 160, 40);
@@ -47,11 +47,20 @@ public class PlaceComponentsInicio extends JPanel implements Serializable {
             this.add(passwordTextLogin);
 
             //insertar imagen
+            JLabel imgfondoi = new JLabel(" ");
+            ImageIcon Imagenfondoi = new ImageIcon("src/main/resources/images/fondoiniciodefinitivo.png");
+            imgfondoi.setIcon(Imagenfondoi);
+            imgfondoi.setSize(800, 900);
+            imgfondoi.setLocation(0, 0);
+            imgfondoi.setVisible(true);
+            this.add(imgfondoi);
+
+            //insertar imagen
             JLabel img = new JLabel(" ");
-            ImageIcon Imagen = new ImageIcon("src/main/resources/images/madrimentate2.jpg");
+            ImageIcon Imagen = new ImageIcon("src/main/resources/images/madrimentate_logo-removebg-previewBIG(1).png");
             img.setIcon(Imagen);
-            img.setSize(160, 160);
-            img.setLocation(320, 150);
+            img.setSize(350, 230);
+            img.setLocation(225, 70);
             img.setVisible(true);
             this.add(img);
 
@@ -61,6 +70,7 @@ public class PlaceComponentsInicio extends JPanel implements Serializable {
             ImageIcon iconoregistro=new ImageIcon("src/main/resources/images/registroboton.png");
             btnReg.setIcon(iconoregistro);
             this.add(btnReg);
+            //btnReg.repaint(300, 580, 200, 60);
 
             btnReg.addActionListener(actionEvent -> {
                 JFrame frameReg = new JFrame("REGISTRO");
@@ -113,6 +123,8 @@ public class PlaceComponentsInicio extends JPanel implements Serializable {
                 }
 
             });
+
+            repaint();
             }
             public static Customer recuperarInformacion() {
                 Client cliente = new Client();
