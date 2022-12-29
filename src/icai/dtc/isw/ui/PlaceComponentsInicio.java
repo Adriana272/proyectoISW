@@ -19,11 +19,17 @@ public class PlaceComponentsInicio extends JPanel implements Serializable {
         private static String IdUsuario;
         private static JTextField userTextLogin;
 
+        private JVentana jVentanaMadrimentate;
+
+        private PanelEmpezar jEmpezar;
+
         public Image imagenfondo;
         public URL fondo;
 
-        public PlaceComponentsInicio() {
+        public PlaceComponentsInicio(JVentana jVentanaMadrimentate) {
 
+            this.jEmpezar=jEmpezar;
+            this.jVentanaMadrimentate=jVentanaMadrimentate;
             this.setLayout(null);
             //this.setBackground(Color.red);
 
@@ -113,7 +119,7 @@ public class PlaceComponentsInicio extends JPanel implements Serializable {
                     framePerfil.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     //JPanel panel = new JPanel();
                     //framePerfil.add(panel);
-                    JPanel perfil = new PlaceComponentsPerfil();
+                    JPanel perfil = new PlaceComponentsPerfil(jVentanaMadrimentate);
                     framePerfil.add(perfil);
                     framePerfil.setVisible(true);
                     framePerfil.setResizable(true);
@@ -126,7 +132,10 @@ public class PlaceComponentsInicio extends JPanel implements Serializable {
 
             repaint();
             }
-            public static Customer recuperarInformacion() {
+
+
+
+    public static Customer recuperarInformacion() {
                 Client cliente = new Client();
                 HashMap<String, Object> session = new HashMap<>();
                 String context = "/getCustomer";

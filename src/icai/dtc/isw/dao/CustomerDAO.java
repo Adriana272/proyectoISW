@@ -285,6 +285,24 @@ public class CustomerDAO {
 		return restaurantes;
 	}
 
+	public static ArrayList<Restaurante> fetchRestaurantesxTipoComida(String food){
+		ArrayList<Restaurante> restaurantes = new ArrayList<>();
+		Connection con=ConnectionDAO.getInstance().getConnection();
+
+
+		try (PreparedStatement pst = con.prepareStatement("SELECT * FROM restaurantes WHERE tipocomida = '"+food+"'");
+			 ResultSet rs = pst.executeQuery()) {
+
+			while (rs.next()) {
+				restaurantes.add(new Restaurante(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+			}
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+		return restaurantes;
+	}
+
 
 
 

@@ -16,6 +16,7 @@ public class PanelEmpezar extends JPanel implements Serializable {
     private static String password;
     private static String IdUsuario;
     private static JTextField userTextLogin;
+    private JVentana jVentanaMadrimentate;
 
     //private Icon imagenFondo=new ImageIcon(getClass().getResource("src/main/resources/images/fondopantallacomida.jpg"));
     //private Image background;
@@ -26,8 +27,9 @@ public class PanelEmpezar extends JPanel implements Serializable {
     Image image=new ImageIcon(url).getImage();
     ImageIcon(url).getImage();*/
 
-    public PanelEmpezar() {
+    public PanelEmpezar(JVentana jVentanaMadrimentate) {
 
+        this.jVentanaMadrimentate=jVentanaMadrimentate;
         this.setLayout(null);
 
         //insertar imagen
@@ -56,7 +58,7 @@ public class PanelEmpezar extends JPanel implements Serializable {
             frameIni.setLocationRelativeTo(null);
             //JPanel panel = new JPanel();
             //frame.add(panel);
-            JPanel inicio = new PlaceComponentsInicio();
+            JPanel inicio = new PlaceComponentsInicio(jVentanaMadrimentate);
             //inicio.setBackground(Color.gray);
             frameIni.add(inicio);
             frameIni.setVisible(true);

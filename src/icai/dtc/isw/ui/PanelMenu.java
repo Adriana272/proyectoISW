@@ -1,5 +1,70 @@
 package icai.dtc.isw.ui;
 
+import icai.dtc.isw.dao.CustomerDAO;
+import icai.dtc.isw.domain.Comida;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+
+public class PanelMenu extends JPanel {
+
+    private JVentana jVentanaMadrimentate;
+
+    public PanelMenu(JVentana jVentanaMadrimentate) {
+        this.jVentanaMadrimentate = jVentanaMadrimentate;
+
+        this.setSize(200, 800);
+        this.setLayout(new BorderLayout());
+
+
+
+
+
+        //por cada restaurante con el mismo id tendra un menu con el mismo id que el restaurante (mismo id por cada producto)
+        ArrayList<Comida> menu;
+        menu = jVentanaMadrimentate.getgRestaurantes().buscarIdRest(1);
+        ArrayList<Comida> comida;
+        comida = jVentanaMadrimentate.getgRestaurantes().buscarIdMenu(1,2);
+        System.out.println(comida);
+
+
+
+
+        ArrayList<Comida> prueba2;
+        prueba2 = CustomerDAO.fetchComidas();
+        //System.out.println(prueba2);
+
+
+
+    }
+
+
+    public void mostrarMenu(int idRest){
+        ArrayList<Comida> menu;
+        menu = jVentanaMadrimentate.getgRestaurantes().buscarIdRest(idRest);
+        for(int i=0;i<menu.size();i++){
+            JPanel pnlProducto = new JPanel(new FlowLayout());
+            ArrayList<Comida> ccc;
+            ccc = jVentanaMadrimentate.getgRestaurantes().buscarIdMenu(idRest,i);
+            System.out.println(ccc);
+            JTextField txtnumero = new JTextField();
+
+
+
+
+
+
+        }
+
+    }
+}
+
+
+
+
+/*package icai.dtc.isw.ui;
+
 import icai.dtc.isw.dao.ConnectionDAO;
 
 import javax.swing.*;
@@ -29,7 +94,7 @@ public class PanelMenuHamburguesa extends JPanel implements Serializable {
         imgMenu.setVisible(true);
         this.add(imgMenu);*/
 
-
+/*
         final  JTextArea hamburguesaEntrantes = new JTextArea(20,20);
         hamburguesaEntrantes.append("ENTRANTES");
         hamburguesaEntrantes.setBounds(25, 25, 250, 25);
@@ -226,4 +291,4 @@ public class PanelMenuHamburguesa extends JPanel implements Serializable {
         btnReservar.setBackground(Color.white);
         this.add(btnReservar);
     }
-}
+}*/

@@ -131,3 +131,4 @@ public  class Restaurante {
         return ("Restaurante: "+getNombre()+", id: "+getId()+", dirección: "+getCalle()+" y tipo de comida: "+getTipoComida()+".\n");
     }
 }
+

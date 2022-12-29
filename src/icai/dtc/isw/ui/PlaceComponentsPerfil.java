@@ -14,9 +14,13 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
      private  int id;
      private  String password;
      private  String IdUsuario;
+     private JVentana jVentanaMadrimentate;
+     private PlaceComponentsInicio jInicio;
 
+     public PlaceComponentsPerfil(JVentana jVentanaMadrimentate) {
 
-     public PlaceComponentsPerfil() {
+        this.jVentanaMadrimentate=jVentanaMadrimentate;
+        this.jInicio=jInicio;
         this.setLayout(null);
         this.setBackground(Color.white);
         /*
@@ -85,8 +89,8 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
              //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
              frameHome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
              //JPanel panelHome = new PanelRestaurante();
-             JPanel panelHome = new PanelesRestaurantes();
-             panelHome.setBackground(Color.orange);
+             JPanel panelHome = new PanelRestaurante(jVentanaMadrimentate);
+             //panelHome.setBackground(Color.orange);
              /*
              try{
                  ((PanelesRestaurantes) panelHome).image= ImageIO.read(new File("src/main/resources/images/fondopantallamenu.png"));

@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 public class PanelDeliveryRestaurante extends JPanel implements ActionListener {
 
-    //public JVentanaMadrimentate jVentanaMadrimentate;
+    public JVentana jVentanaMadrimentate;
 
     public DeliveryGlovo deliveryGlovo;
     public DeliveryDeliveroo deliveryDeliveroo;
@@ -20,7 +20,7 @@ public class PanelDeliveryRestaurante extends JPanel implements ActionListener {
 
 
 
-    public  PanelDeliveryRestaurante(/*JVentanaMadrimentate jVentanaMadrimentate*/){
+    public  PanelDeliveryRestaurante(/*JVentana jVentanaMadrimentate*/){
 
         JPanel pnlNorte = new JPanel(new GridLayout(1,3));
         this.setLayout(new BorderLayout());
