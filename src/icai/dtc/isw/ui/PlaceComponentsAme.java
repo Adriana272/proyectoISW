@@ -27,6 +27,16 @@ public class PlaceComponentsAme extends JPanel implements Serializable {
 
         this.jVentanaMadrimentate = jVentanaMadrimentate;
         this.setLayout(null);
+        this.setBackground(Color.lightGray);
+
+        //insertar imagen
+        JLabel imgFondoAm = new JLabel(" ");
+        ImageIcon ImagenAm = new ImageIcon("src/main/resources/images/americana.jpg");
+        imgFondoAm.setIcon(ImagenAm);
+        imgFondoAm.setSize(800, 200);
+        imgFondoAm.setLocation(0, 0);
+        imgFondoAm.setVisible(true);
+        this.add(imgFondoAm);
 
         restencame = CustomerDAO.fetchRestaurantesxTipoComida("americana");
         System.out.println(restencame);
@@ -55,8 +65,10 @@ public class PlaceComponentsAme extends JPanel implements Serializable {
         this.add(restaurants);
 
         JButton btnReservarAm=new JButton("Reservar Mesa");
-        btnReservarAm.setFont(new Font("Arial Black", Font.BOLD, 18));
-        btnReservarAm.setBounds(200, 750, 160, 60);
+        btnReservarAm.setFont(new Font("Arial Black", Font.BOLD, 11));
+        btnReservarAm.setBounds(160, 750, 200, 60);
+        ImageIcon iconoRMAm=new ImageIcon("src/main/resources/images/reserva.png");
+        btnReservarAm.setIcon(iconoRMAm);
         btnReservarAm.setBackground(Color.white);
 
         btnReservarAm.addActionListener(actionEvent -> {
@@ -78,9 +90,11 @@ public class PlaceComponentsAme extends JPanel implements Serializable {
         });
 
 
-        JButton btnPedirAm=new JButton("Pedir a domicilio");
-        btnPedirAm.setFont(new Font("Arial Black", Font.BOLD, 18));
-        btnPedirAm.setBounds(440, 750, 160, 60);
+        JButton btnPedirAm=new JButton("A domicilio");
+        btnPedirAm.setFont(new Font("Arial Black", Font.BOLD, 11));
+        btnPedirAm.setBounds(440, 750, 200, 60);
+        ImageIcon iconoADAm=new ImageIcon("src/main/resources/images/pedido.png");
+        btnPedirAm.setIcon(iconoADAm);
         btnPedirAm.setBackground(Color.white);
 
         btnPedirAm.addActionListener(actionEvent -> {

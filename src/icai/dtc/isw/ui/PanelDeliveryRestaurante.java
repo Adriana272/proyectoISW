@@ -26,6 +26,16 @@ public class PanelDeliveryRestaurante extends JPanel implements ActionListener {
         this.setLayout(new BorderLayout());*/
 
         this.setLayout(null);
+        this.setBackground(Color.lightGray);
+
+        //insertar imagen
+        JLabel imgFondoAm = new JLabel(" ");
+        ImageIcon ImagenAm = new ImageIcon("src/main/resources/images/fondodelivery.jpg");
+        imgFondoAm.setIcon(ImagenAm);
+        imgFondoAm.setSize(800, 295);
+        imgFondoAm.setLocation(0, 605);
+        imgFondoAm.setVisible(true);
+        this.add(imgFondoAm);
 
 
         //JLabel lblservicio = new JLabel("servicio de Delivery");
@@ -45,6 +55,8 @@ public class PanelDeliveryRestaurante extends JPanel implements ActionListener {
         this.add(lblubereats);
 
 
+
+
         /*pnlNorte.add(lblglovo);
         pnlNorte.add(lblubereats);
         pnlNorte.add(lbldeliveroo);*/
@@ -54,15 +66,21 @@ public class PanelDeliveryRestaurante extends JPanel implements ActionListener {
 
         //JPanel pnlMedio = new JPanel(new GridLayout(3,7));
         JButton btnglovo = new JButton("Glovo");
-        btnglovo.setBounds(120,400,150,100);
+        btnglovo.setBounds(70,400,200,100);
+        ImageIcon iconog=new ImageIcon("src/main/resources/images/glovoapp.png");
+        btnglovo.setIcon(iconog);
         this.add(btnglovo);
 
         JButton btndeliveroo = new JButton("Deliveroo");
-        btndeliveroo.setBounds(320,400,150,100);
+        btndeliveroo.setBounds(270,400,200,100);
+        ImageIcon iconod=new ImageIcon("src/main/resources/images/deliverooapp.png");
+        btndeliveroo.setIcon(iconod);
         this.add(btndeliveroo);
 
         JButton btnubereats = new JButton("UberEats");
-        btnubereats.setBounds(520,400,150,100);
+        btnubereats.setBounds(470,400,200,100);
+        ImageIcon iconoue=new ImageIcon("src/main/resources/images/ubereatsappofficial.png");
+        btnubereats.setIcon(iconoue);
         this.add(btnubereats);
         /*
         JLabel lbl = new JLabel("                                                              ");
@@ -174,18 +192,48 @@ public class PanelDeliveryRestaurante extends JPanel implements ActionListener {
 
 
         btnglovo.addActionListener(e->{
-
             System.out.println("gracias por elegir glovo");
+
+            JFrame frameLast = new JFrame("Confirmación pedido");
+            frameLast.setSize(800, 935);
+            frameLast.setBackground(Color.lightGray);
+            frameLast.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frameLast.setLocationRelativeTo(null);
+            JPanel panell = new LastPanel();
+            panell.setBackground(Color.gray);
+            frameLast.add(panell);
+            frameLast.setVisible(true);
+            frameLast.setResizable(true);
         });
 
         btndeliveroo.addActionListener(e->{
+            System.out.println("gracias por elegir deliveroo");
 
-            System.out.println("gracias por elegir glovo");
+            JFrame frameLast = new JFrame("Confirmación pedido");
+            frameLast.setSize(800, 935);
+            frameLast.setBackground(Color.lightGray);
+            frameLast.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frameLast.setLocationRelativeTo(null);
+            JPanel panell = new LastPanel();
+            panell.setBackground(Color.gray);
+            frameLast.add(panell);
+            frameLast.setVisible(true);
+            frameLast.setResizable(true);
         });
 
         btnubereats.addActionListener(e->{
+            System.out.println("gracias por elegir ubereats");
 
-            System.out.println("gracias por elegir glovo");
+            JFrame frameLast = new JFrame("Confirmación pedido");
+            frameLast.setSize(800, 935);
+            frameLast.setBackground(Color.lightGray);
+            frameLast.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frameLast.setLocationRelativeTo(null);
+            JPanel panell = new LastPanel();
+            panell.setBackground(Color.gray);
+            frameLast.add(panell);
+            frameLast.setVisible(true);
+            frameLast.setResizable(true);
         });
 
 

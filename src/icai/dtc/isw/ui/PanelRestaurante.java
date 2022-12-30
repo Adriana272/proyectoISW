@@ -12,13 +12,6 @@ import java.util.ArrayList;
 
 public class PanelRestaurante extends JPanel implements Serializable {
 
-    private JButton btnAsiatico = new JButton();
-    private JButton btnHamburguesa = new JButton(new ImageIcon("imagen-archivo-hamburguesas_98.webp"));
-    private JButton btnPizza = new JButton(new ImageIcon("papa-johns-pizza.webp"));
-    private JButton btnEspaniol = new JButton(new ImageIcon("p15_restaurantes_de_comida_espanola_en_espana_120_orig.jpg"));
-
-    private JButton btnBuscarRestauranteLupa = new JButton("BUSCAR");
-    JTextField txtRest = new JTextField(("nombredelrestaurante, tipo"));
 
     private JVentana jVentanaMadrimentate;
     private ArrayList<Restaurante> restaurantes;
@@ -40,42 +33,87 @@ public class PanelRestaurante extends JPanel implements Serializable {
         this.jVentanaMadrimentate = jVentanaMadrimentate;
         this.jPerfil = jPerfil;
         this.panelEncontrado = panelEncontrado;
-        this.setPreferredSize(new Dimension(200, 800));
-        this.setBackground(Color.orange);
-        this.setLayout(new BorderLayout());
+        //this.setPreferredSize(new Dimension(200, 800));
+        //this.setBackground(Color.orange);
+        this.setLayout(null);
+        this.setBackground(Color.lightGray);
+
+        //insertar imagen
+        JLabel imgFondoR = new JLabel(" ");
+        ImageIcon ImagenR = new ImageIcon("src/main/resources/images/comida-domicilio-online.jpg");
+        imgFondoR.setIcon(ImagenR);
+        imgFondoR.setSize(800, 200);
+        imgFondoR.setLocation(0, 0);
+        imgFondoR.setVisible(true);
+        this.add(imgFondoR);
 
         // JPanel panelPrincipal = new JPanel();
-        JPanel panelNorte = new JPanel();
-        JLabel madrimentate = new JLabel(new ImageIcon("main.resources.images/madrimentate.jpg"));
-        panelNorte.add(madrimentate);
-        this.add(panelNorte, BorderLayout.NORTH);
+        //JPanel panelNorte = new JPanel();
+        //JLabel madrimentate = new JLabel(new ImageIcon("main.resources.images/madrimentate.jpg"));
+        //panelNorte.add(madrimentate);
+        //this.add(panelNorte, BorderLayout.NORTH);
 
 
-        JPanel panelNorte2 = new JPanel(new FlowLayout());
+        //JPanel panelNorte2 = new JPanel(new FlowLayout());
 
         setVisible(true);
 
-        panelNorte2.add(btnBuscarRestauranteLupa);
+        JTextField txtRest = new JTextField(("Nombre del restaurante..."));
+        txtRest.setBounds(425, 250, 200, 30);
+
+        JButton btnAsiatico = new JButton("Comida Asiática");
+        JButton btnHamburguesa = new JButton("Comida Americana");
+        JButton btnPizza = new JButton("Comida italiana");
+        JButton btnEspaniol = new JButton("Comida española");
+
+        JButton btnBuscarRestauranteLupa = new JButton("BUSCAR");
+
+        /*panelNorte2.add(btnBuscarRestauranteLupa);
         panelNorte2.add(txtRest);
-        panelNorte.add(panelNorte2, BorderLayout.NORTH);
-
-        JPanel panelSur = new JPanel(new GridLayout(5, 2));
-        btnAsiatico.setText("Asiatico");
-        btnAsiatico.setIcon(new ImageIcon("cocina_asiatica.webp"));
-        btnHamburguesa.setText("Hamburgesa");
-        btnPizza.setText("Pizza");
-        btnEspaniol.setText("Española");
+        panelNorte.add(panelNorte2, BorderLayout.NORTH);*/
 
 
-        panelSur.add(btnPizza);
-        panelSur.add(btnHamburguesa);
-        panelSur.add(btnEspaniol);
-        panelSur.add(btnAsiatico);
+        //JPanel panelSur = new JPanel(new GridLayout(5, 2));
+
+        btnAsiatico.setBounds(275, 350, 250, 60);
+        ImageIcon iconoAs=new ImageIcon("src/main/resources/images/asiatica.png");
+        btnAsiatico.setIcon(iconoAs);
+        this.add(btnAsiatico);
+
+        btnPizza.setBounds(275, 450, 250, 60);
+        ImageIcon iconoI=new ImageIcon("src/main/resources/images/pizza.png");
+        btnPizza.setIcon(iconoI);
+        this.add(btnPizza);
+
+        btnHamburguesa.setBounds(275, 550, 250, 60);
+        ImageIcon iconoAm=new ImageIcon("src/main/resources/images/hamburguesa.png");
+        btnHamburguesa.setIcon(iconoAm);
+        this.add(btnHamburguesa);
+
+        btnEspaniol.setBounds(275, 650, 250, 60);
+        ImageIcon iconoEsp=new ImageIcon("src/main/resources/images/paella.png");
+        btnEspaniol.setIcon(iconoEsp);
+        this.add(btnEspaniol);
+
+        btnBuscarRestauranteLupa.setBounds(225, 250, 150, 30);
+        ImageIcon iconoBusc=new ImageIcon("src/main/resources/images/lupa.png");
+        btnBuscarRestauranteLupa.setIcon(iconoBusc);
+        this.add(btnBuscarRestauranteLupa);
 
 
-        this.add(panelSur, BorderLayout.SOUTH);
+
+
+        this.add(btnPizza);
+        this.add(btnHamburguesa);
+        this.add(btnEspaniol);
+        this.add(btnAsiatico);
+        this.add(btnBuscarRestauranteLupa);
+        this.add(txtRest);
+
+
+        /*this.add(panelSur, BorderLayout.SOUTH);
         this.add(panelNorte, BorderLayout.NORTH);
-        this.add(panelNorte2, BorderLayout.CENTER);
+        this.add(panelNorte2, BorderLayout.CENTER);*/
 
         /*btnEspaniol.addActionListener(this);
         btnAsiatico.addActionListener(this);
@@ -126,6 +164,7 @@ public class PanelRestaurante extends JPanel implements Serializable {
             frameHamb.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frameHamb.setLocationRelativeTo(null);
             JPanel hamburg = new PlaceComponentsAme();
+            hamburg.setBackground(Color.gray);
             frameHamb.add(hamburg);
             frameHamb.setVisible(true);
             frameHamb.setResizable(true);
@@ -140,6 +179,17 @@ public class PanelRestaurante extends JPanel implements Serializable {
             JPanel buscador = new JPanel();
             ArrayList<Restaurante> restaurantebuscado;
             buscador.setLayout(null);
+
+            buscador.setBackground(Color.gray);
+
+            //insertar imagen
+            JLabel imgFondoBL = new JLabel(" ");
+            ImageIcon ImagenBL = new ImageIcon("src/main/resources/images/buscador.png");
+            imgFondoBL.setIcon(ImagenBL);
+            imgFondoBL.setSize(800, 200);
+            imgFondoBL.setLocation(0, 0);
+            imgFondoBL.setVisible(true);
+            buscador.add(imgFondoBL);
 
             restaurantebuscado = CustomerDAO.fetchRestaurantexNombre((txtRest.getText()).toUpperCase());
             System.out.println(restaurantebuscado);
@@ -165,8 +215,10 @@ public class PanelRestaurante extends JPanel implements Serializable {
             buscador.add(restaurants);
 
             JButton btnReservarBL=new JButton("Reservar Mesa");
-            btnReservarBL.setFont(new Font("Arial Black", Font.BOLD, 18));
-            btnReservarBL.setBounds(200, 750, 160, 60);
+            btnReservarBL.setFont(new Font("Arial Black", Font.BOLD, 11));
+            btnReservarBL.setBounds(160, 750, 200, 60);
+            ImageIcon iconoRMBL=new ImageIcon("src/main/resources/images/reserva.png");
+            btnReservarBL.setIcon(iconoRMBL);
             btnReservarBL.setBackground(Color.white);
 
             btnReservarBL.addActionListener(e -> {
@@ -184,9 +236,11 @@ public class PanelRestaurante extends JPanel implements Serializable {
             });
 
 
-            JButton btnPedirBL=new JButton("Pedir a domicilio");
-            btnPedirBL.setFont(new Font("Arial Black", Font.BOLD, 18));
-            btnPedirBL.setBounds(440, 750, 160, 60);
+            JButton btnPedirBL=new JButton("A domicilio");
+            btnPedirBL.setFont(new Font("Arial Black", Font.BOLD, 11));
+            btnPedirBL.setBounds(440, 750, 200, 60);
+            ImageIcon iconoADBL=new ImageIcon("src/main/resources/images/pedido.png");
+            btnPedirBL.setIcon(iconoADBL);
             btnPedirBL.setBackground(Color.white);
 
             btnPedirBL.addActionListener(e -> {

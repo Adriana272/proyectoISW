@@ -28,6 +28,16 @@ public class PlaceComponentsEsp extends JPanel implements Serializable {
 
         this.jVentanaMadrimentate = jVentanaMadrimentate;
         this.setLayout(null);
+        this.setBackground(Color.lightGray);
+
+        //insertar imagen
+        JLabel imgFondoE = new JLabel(" ");
+        ImageIcon ImagenE = new ImageIcon("src/main/resources/images/spain2.jpg");
+        imgFondoE.setIcon(ImagenE);
+        imgFondoE.setSize(800, 200);
+        imgFondoE.setLocation(0, 0);
+        imgFondoE.setVisible(true);
+        this.add(imgFondoE);
 
         restencesp = CustomerDAO.fetchRestaurantesxTipoComida("espaniola");
         System.out.println(restencesp);
@@ -57,8 +67,10 @@ public class PlaceComponentsEsp extends JPanel implements Serializable {
         this.add(restaurants);
 
         JButton btnReservarE=new JButton("Reservar Mesa");
-        btnReservarE.setFont(new Font("Arial Black", Font.BOLD, 18));
-        btnReservarE.setBounds(200, 750, 160, 60);
+        btnReservarE.setFont(new Font("Arial Black", Font.BOLD, 11));
+        btnReservarE.setBounds(160, 750, 200, 60);
+        ImageIcon iconoRME=new ImageIcon("src/main/resources/images/reserva.png");
+        btnReservarE.setIcon(iconoRME);
         btnReservarE.setBackground(Color.white);
         btnReservarE.addActionListener(actionEvent -> {
             Object opcion= JOptionPane.showInputDialog(this, "¿En qué restaurante desea reservar mesa?", "Elegir", JOptionPane.QUESTION_MESSAGE, null, nombresesp.toArray(), nombresesp.toArray()[0]);
@@ -78,9 +90,11 @@ public class PlaceComponentsEsp extends JPanel implements Serializable {
             Reserva.setResizable(true);
                 });
 
-        JButton btnPedirE=new JButton("Pedir a domicilio");
-        btnPedirE.setFont(new Font("Arial Black", Font.BOLD, 18));
-        btnPedirE.setBounds(440, 750, 160, 60);
+        JButton btnPedirE=new JButton("A domicilio");
+        btnPedirE.setFont(new Font("Arial Black", Font.BOLD, 11));
+        btnPedirE.setBounds(440, 750, 200, 60);
+        ImageIcon iconoADE=new ImageIcon("src/main/resources/images/pedido.png");
+        btnPedirE.setIcon(iconoADE);
         btnPedirE.setBackground(Color.white);
 
         btnPedirE.addActionListener(actionEvent -> {

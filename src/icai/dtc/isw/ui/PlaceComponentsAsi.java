@@ -28,6 +28,16 @@ public class PlaceComponentsAsi extends JPanel implements Serializable {
 
         this.jVentanaMadrimentate = jVentanaMadrimentate;
         this.setLayout(null);
+        this.setBackground(Color.lightGray);
+
+        //insertar imagen
+        JLabel imgFondoAs = new JLabel(" ");
+        ImageIcon ImagenAs = new ImageIcon("src/main/resources/images/asi.jpg");
+        imgFondoAs.setIcon(ImagenAs);
+        imgFondoAs.setSize(800, 200);
+        imgFondoAs.setLocation(0, 0);
+        imgFondoAs.setVisible(true);
+        this.add(imgFondoAs);
 
         restencasi = CustomerDAO.fetchRestaurantesxTipoComida("asiatica");
         System.out.println(restencasi);
@@ -56,8 +66,10 @@ public class PlaceComponentsAsi extends JPanel implements Serializable {
         this.add(restaurants);
 
         JButton btnReservarAs=new JButton("Reservar Mesa");
-        btnReservarAs.setFont(new Font("Arial Black", Font.BOLD, 18));
-        btnReservarAs.setBounds(200, 750, 160, 60);
+        btnReservarAs.setFont(new Font("Arial Black", Font.BOLD, 11));
+        btnReservarAs.setBounds(160, 750, 200, 60);
+        ImageIcon iconoRMAs=new ImageIcon("src/main/resources/images/reserva.png");
+        btnReservarAs.setIcon(iconoRMAs);
         btnReservarAs.setBackground(Color.white);
 
         btnReservarAs.addActionListener(actionEvent -> {
@@ -79,9 +91,11 @@ public class PlaceComponentsAsi extends JPanel implements Serializable {
         });
 
 
-        JButton btnPedirAs=new JButton("Pedir a domicilio");
-        btnPedirAs.setFont(new Font("Arial Black", Font.BOLD, 18));
-        btnPedirAs.setBounds(440, 750, 160, 60);
+        JButton btnPedirAs=new JButton("A domicilio");
+        btnPedirAs.setFont(new Font("Arial Black", Font.BOLD, 11));
+        btnPedirAs.setBounds(440, 750, 200, 60);
+        ImageIcon iconoADAs=new ImageIcon("src/main/resources/images/pedido.png");
+        btnPedirAs.setIcon(iconoADAs);
         btnPedirAs.setBackground(Color.white);
 
         btnPedirAs.addActionListener(actionEvent -> {

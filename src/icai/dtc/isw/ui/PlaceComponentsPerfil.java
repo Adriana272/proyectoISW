@@ -105,50 +105,24 @@ public class PlaceComponentsPerfil extends JPanel implements Serializable {
 
          });
 
-        final JButton btnReservas = new JButton("Mis Reservas");
+        /*final JButton btnReservas = new JButton("Mis Reservas");
         btnReservas.setBounds(300, 580, 200, 60);
         ImageIcon iconoreservas=new ImageIcon("src/main/resources/images/reserva.png");
         btnReservas.setIcon(iconoreservas);
         this.add(btnReservas);
 
-        //Action listener boton reservas
-        btnReservas.addActionListener(actionEvent -> {
-            JFrame frameRes = new JFrame("RESERVAS");
-            frameRes.setSize(800, 900);
-            frameRes.setLocationRelativeTo(null);
-            //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
-            frameRes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            JPanel panelRes = new JPanel();
-            //placeComponentsReservas(panelRes);
-            frameRes.add(panelRes);
-            frameRes.setVisible(true);
-            frameRes.setResizable(true);
 
-        });
 
         final JButton btnPedidos = new JButton("Mis Pedidos");
         btnPedidos.setBounds(300, 650, 200, 60);
         ImageIcon iconopedidos=new ImageIcon("src/main/resources/images/pedido.png");
         btnPedidos.setIcon(iconopedidos);
-        this.add(btnPedidos);
+        this.add(btnPedidos);*/
 
-        //Action listener boton pedidos
-        btnPedidos.addActionListener(actionEvent -> {
-            JFrame framePed = new JFrame("PEDIDOS");
-            framePed.setSize(800, 900);
-            framePed.setLocationRelativeTo(null);
-            //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
-            framePed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            JPanel panelPed = new JPanel();
-            //placeComponentsPedidos(panelPed);
-            framePed.add(panelPed);
-            framePed.setVisible(true);
-            framePed.setResizable(true);
 
-        });
 
         final JButton btnAjustes = new JButton("Ajustes");
-        btnAjustes.setBounds(300, 720, 200, 60);
+        btnAjustes.setBounds(300, 580, 200, 60);
         ImageIcon iconoajustes=new ImageIcon("src/main/resources/images/ajustes.png");
         btnAjustes.setIcon(iconoajustes);
         this.add(btnAjustes);

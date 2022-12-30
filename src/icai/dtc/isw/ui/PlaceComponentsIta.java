@@ -27,6 +27,16 @@ public class PlaceComponentsIta extends JPanel implements Serializable {
 
         this.jVentanaMadrimentate = jVentanaMadrimentate;
         this.setLayout(null);
+        this.setBackground(Color.lightGray);
+
+        //insertar imagen
+        JLabel imgFondoI = new JLabel(" ");
+        ImageIcon ImagenI = new ImageIcon("src/main/resources/images/italiana.jpg");
+        imgFondoI.setIcon(ImagenI);
+        imgFondoI.setSize(800, 200);
+        imgFondoI.setLocation(0, 0);
+        imgFondoI.setVisible(true);
+        this.add(imgFondoI);
 
         restencita = CustomerDAO.fetchRestaurantesxTipoComida("italiana");
         System.out.println(restencita);
@@ -55,8 +65,10 @@ public class PlaceComponentsIta extends JPanel implements Serializable {
         this.add(restaurants);
 
         JButton btnReservarI=new JButton("Reservar Mesa");
-        btnReservarI.setFont(new Font("Arial Black", Font.BOLD, 18));
-        btnReservarI.setBounds(200, 750, 160, 60);
+        btnReservarI.setFont(new Font("Arial Black", Font.BOLD, 11));
+        btnReservarI.setBounds(160, 750, 200, 60);
+        ImageIcon iconoRMI=new ImageIcon("src/main/resources/images/reserva.png");
+        btnReservarI.setIcon(iconoRMI);
         btnReservarI.setBackground(Color.white);
 
 
@@ -78,9 +90,11 @@ public class PlaceComponentsIta extends JPanel implements Serializable {
             Reserva.setResizable(true);
         });
 
-        JButton btnPedirI=new JButton("Pedir a domicilio");
-        btnPedirI.setFont(new Font("Arial Black", Font.BOLD, 18));
-        btnPedirI.setBounds(440, 750, 160, 60);
+        JButton btnPedirI=new JButton("A domicilio");
+        btnPedirI.setFont(new Font("Arial Black", Font.BOLD, 11));
+        btnPedirI.setBounds(440, 750, 200, 60);
+        ImageIcon iconoADI=new ImageIcon("src/main/resources/images/pedido.png");
+        btnPedirI.setIcon(iconoADI);
         btnPedirI.setBackground(Color.white);
 
         btnPedirI.addActionListener(actionEvent -> {
