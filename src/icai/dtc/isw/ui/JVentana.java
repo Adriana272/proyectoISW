@@ -30,7 +30,7 @@ public class JVentana extends javax.swing.JFrame {
     private  PanelRestaurante panelRestaurante = new PanelRestaurante(this);
     private  PanelTipoRestaurante pnlTipo = new PanelTipoRestaurante(this);
     private PanelDeliveryRestaurante pnldeliveryrestauran;
-    private PanelReservarMesa pnlReservar = new PanelReservarMesa(this);
+    private PanelReservarMesa pnlReservar = new PanelReservarMesa(/*this*/);
     private PanelMenu pnlmenu;
     private static int id;
     private static String password;
@@ -134,8 +134,9 @@ public class JVentana extends javax.swing.JFrame {
     public static GestorBD getgRestaurantes(){
         return gRestaurantes;
     }
+
     public JPanel inVentanaReserva(){
-        pnlTipo.setVisible(false);
+        //pnlTipo.setVisible(false);
         this.add(pnlReservar);
         pnlReservar.setVisible(true);
         setSize(800,800);

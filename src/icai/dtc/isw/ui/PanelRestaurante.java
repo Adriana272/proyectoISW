@@ -30,6 +30,8 @@ public class PanelRestaurante extends JPanel implements Serializable {
     public ArrayList<Restaurante> restencesp;
     public ArrayList<String> relespaniola = new ArrayList();
 
+    public int idrestaurantebl;
+
 
     public PanelRestaurante(JVentana jVentanaMadrimentate) {
 
@@ -87,7 +89,7 @@ public class PanelRestaurante extends JPanel implements Serializable {
             frameEsp.setBackground(Color.lightGray);
             frameEsp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frameEsp.setLocationRelativeTo(null);
-            JPanel espana = new PlaceComponentsEsp();
+            JPanel espana = new PlaceComponentsEsp(jVentanaMadrimentate);
             frameEsp.add(espana);
             frameEsp.setVisible(true);
             frameEsp.setResizable(true);
@@ -95,50 +97,122 @@ public class PanelRestaurante extends JPanel implements Serializable {
 
         btnAsiatico.addActionListener(actionEvent -> {
             JFrame frameAsi = new JFrame("Comida Asiática");
-            frameEsp.setSize(800, 900);
-            frameEsp.setBackground(Color.lightGray);
-            frameEsp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frameEsp.setLocationRelativeTo(null);
+            frameAsi.setSize(800, 900);
+            frameAsi.setBackground(Color.lightGray);
+            frameAsi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frameAsi.setLocationRelativeTo(null);
             JPanel asia = new PlaceComponentsAsi();
-            frameEsp.add(espana);
-            frameEsp.setVisible(true);
-            frameEsp.setResizable(true);
+            frameAsi.add(asia);
+            frameAsi.setVisible(true);
+            frameAsi.setResizable(true);
         });
 
         btnPizza.addActionListener(actionEvent -> {
             JFrame framePizza = new JFrame("Comida Italiana");
-            frameEsp.setSize(800, 900);
-            frameEsp.setBackground(Color.lightGray);
-            frameEsp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frameEsp.setLocationRelativeTo(null);
-            JPanel pizza = new PlaceComponentsEsp();
-            frameEsp.add(espana);
-            frameEsp.setVisible(true);
-            frameEsp.setResizable(true);
+            framePizza.setSize(800, 900);
+            framePizza.setBackground(Color.lightGray);
+            framePizza.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            framePizza.setLocationRelativeTo(null);
+            JPanel pizza = new PlaceComponentsIta();
+            framePizza.add(pizza);
+            framePizza.setVisible(true);
+            framePizza.setResizable(true);
         });
 
         btnHamburguesa.addActionListener(actionEvent -> {
             JFrame frameHamb = new JFrame("Comida Americana");
-            frameEsp.setSize(800, 900);
-            frameEsp.setBackground(Color.lightGray);
-            frameEsp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frameEsp.setLocationRelativeTo(null);
-            JPanel hamburg = new PlaceComponentsHamb();
-            frameEsp.add(espana);
-            frameEsp.setVisible(true);
-            frameEsp.setResizable(true);
+            frameHamb.setSize(800, 900);
+            frameHamb.setBackground(Color.lightGray);
+            frameHamb.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frameHamb.setLocationRelativeTo(null);
+            JPanel hamburg = new PlaceComponentsAme();
+            frameHamb.add(hamburg);
+            frameHamb.setVisible(true);
+            frameHamb.setResizable(true);
         });
 
         btnBuscarRestauranteLupa.addActionListener(actionEvent -> {
             JFrame frameBL = new JFrame("RESTAURANTE BUSCADO");
-            frameEsp.setSize(800, 900);
-            frameEsp.setBackground(Color.lightGray);
-            frameEsp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frameEsp.setLocationRelativeTo(null);
-            JPanel buscador = new PlaceComponentsEsp();
-            frameEsp.add(espana);
-            frameEsp.setVisible(true);
-            frameEsp.setResizable(true);
+            frameBL.setSize(800, 900);
+            frameBL.setBackground(Color.lightGray);
+            frameBL.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frameBL.setLocationRelativeTo(null);
+            JPanel buscador = new JPanel();
+            ArrayList<Restaurante> restaurantebuscado;
+            buscador.setLayout(null);
+
+            restaurantebuscado = CustomerDAO.fetchRestaurantexNombre((txtRest.getText()).toUpperCase());
+            System.out.println(restaurantebuscado);
+            System.out.println(CustomerDAO.fetchRestaurantes());
+
+            JLabel labelBL=new JLabel("BUSCADOR");
+            labelBL.setFont(new Font("Arial Black", Font.BOLD, 30));
+            labelBL.setBounds(350, 20, 400, 200);
+            buscador.add(labelBL);
+
+            final JTextArea restaurants = new JTextArea();
+            restaurants.setBounds(100, 250, 600, 400);
+            //platosTextField.setFont(Font.getFont(Font.SANS_SERIF));
+            //restaurants.setBackground(Color.lightGray);
+            //for(String cancion: relespaniola){
+            System.out.println(restaurantebuscado);
+            System.out.println("ATM");
+            for(int i=0; i<(restaurantebuscado.toArray().length); i++) {
+                restaurants.append("* " + ((restaurantebuscado.toArray())[i]).toString());
+                restaurants.append("\n");
+            }
+            restaurants.setEditable(false);
+            buscador.add(restaurants);
+
+            JButton btnReservarBL=new JButton("Reservar Mesa");
+            btnReservarBL.setFont(new Font("Arial Black", Font.BOLD, 18));
+            btnReservarBL.setBounds(200, 750, 160, 60);
+            btnReservarBL.setBackground(Color.white);
+
+            btnReservarBL.addActionListener(e -> {
+                JFrame Reserva=new JFrame((txtRest.getText()).toUpperCase());
+                Reserva.setSize(800, 900);
+                Reserva.setBackground(Color.lightGray);
+                Reserva.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                Reserva.setLocationRelativeTo(null);
+                JPanel r=new PanelReservarMesa();
+                Reserva.add(r);
+                //Reserva.add(jVentanaMadrimentate.inVentanaReserva());
+                //this.jVentanaMadrimentate.inVentanaReserva();
+                Reserva.setVisible(true);
+                Reserva.setResizable(true);
+            });
+
+
+            JButton btnPedirBL=new JButton("Pedir a domicilio");
+            btnPedirBL.setFont(new Font("Arial Black", Font.BOLD, 18));
+            btnPedirBL.setBounds(440, 750, 160, 60);
+            btnPedirBL.setBackground(Color.white);
+
+            btnPedirBL.addActionListener(e -> {
+                JFrame Carta=new JFrame((txtRest.getText()).toUpperCase());
+                Carta.setSize(800, 900);
+                Carta.setBackground(Color.lightGray);
+                Carta.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                Carta.setLocationRelativeTo(null);
+
+                idrestaurantebl= CustomerDAO.fetchIdRestaurantexNombre((txtRest.getText()).toUpperCase());
+                System.out.println(idrestaurantebl);
+
+                JPanel c=new PanelPedirDomicilio(idrestaurantebl);
+                Carta.add(c);
+                //Reserva.add(jVentanaMadrimentate.inVentanaReserva());
+                //this.jVentanaMadrimentate.inVentanaReserva();
+                Carta.setVisible(true);
+                Carta.setResizable(true);
+            });
+
+            buscador.add(btnReservarBL);
+            buscador.add(btnPedirBL);
+
+            frameBL.add(buscador);
+            frameBL.setVisible(true);
+            frameBL.setResizable(true);
         });
 
 

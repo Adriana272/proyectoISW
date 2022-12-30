@@ -23,7 +23,7 @@ public class PanelReservarMesa extends JPanel {
 
 
 
-    public PanelReservarMesa(JVentana jVentanaMadrimentate) {
+    public PanelReservarMesa(/*JVentana jVentanaMadrimentate*/) {
         this.jVentanaMadrimentate = jVentanaMadrimentate;
         pnlmes1 = new MonthPanel(4,2022);
         pnlmes2 = new MonthPanel(0, 2023);

@@ -14,54 +14,53 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class PlaceComponentsEsp extends JPanel implements Serializable {
+public class PlaceComponentsAme extends JPanel implements Serializable {
 
 
     private JVentana jVentanaMadrimentate;
-    public ArrayList<Restaurante> restencesp;
-    public ArrayList<String> nombresesp;
+    public ArrayList<Restaurante> restencame;
+    public ArrayList<String> nombresame;
+    public int idrestauranteAm;
 
-    public int idrestauranteE;
 
-
-    public PlaceComponentsEsp(JVentana jVentanaMadrimentate) {
+    public PlaceComponentsAme(/*JVentana jVentanaMadrimentate*/) {
 
         this.jVentanaMadrimentate = jVentanaMadrimentate;
         this.setLayout(null);
 
-        restencesp = CustomerDAO.fetchRestaurantesxTipoComida("espaniola");
-        System.out.println(restencesp);
-        nombresesp= CustomerDAO.fetchNameRestaurantesxTipoComida("espaniola");
-        System.out.println(nombresesp);
+        restencame = CustomerDAO.fetchRestaurantesxTipoComida("americana");
+        System.out.println(restencame);
+        nombresame = CustomerDAO.fetchNameRestaurantesxTipoComida("americana");
+        System.out.println(nombresame);
         System.out.println(CustomerDAO.fetchRestaurantes());
 
-        JLabel labelEsp=new JLabel("ESPAÑA");
-        labelEsp.setFont(new Font("Arial Black", Font.BOLD, 30));
-        labelEsp.setBounds(350, 20, 400, 200);
-        this.add(labelEsp);
+        JLabel labelAme=new JLabel("AMERICA");
+        labelAme.setFont(new Font("Arial Black", Font.BOLD, 30));
+        labelAme.setBounds(350, 20, 400, 200);
+        this.add(labelAme);
 
         final JTextArea restaurants = new JTextArea();
         restaurants.setBounds(100, 250, 600, 400);
         //platosTextField.setFont(Font.getFont(Font.SANS_SERIF));
         //restaurants.setBackground(Color.lightGray);
         //for(String cancion: relespaniola){
-
-        System.out.println(restencesp);
+        System.out.println(restencame);
         System.out.println("ATM");
-        for(int i=0; i<(restencesp.toArray().length); i++) {
-            restaurants.append("* "+((restencesp.toArray())[i]).toString());
+        for(int i=0; i<(restencame.toArray().length); i++) {
+            restaurants.append("* "+((restencame.toArray())[i]).toString());
             restaurants.append("\n");
 
         }
         restaurants.setEditable(false);
         this.add(restaurants);
 
-        JButton btnReservarE=new JButton("Reservar Mesa");
-        btnReservarE.setFont(new Font("Arial Black", Font.BOLD, 18));
-        btnReservarE.setBounds(200, 750, 160, 60);
-        btnReservarE.setBackground(Color.white);
-        btnReservarE.addActionListener(actionEvent -> {
-            Object opcion= JOptionPane.showInputDialog(this, "¿En qué restaurante desea reservar mesa?", "Elegir", JOptionPane.QUESTION_MESSAGE, null, nombresesp.toArray(), nombresesp.toArray()[0]);
+        JButton btnReservarAm=new JButton("Reservar Mesa");
+        btnReservarAm.setFont(new Font("Arial Black", Font.BOLD, 18));
+        btnReservarAm.setBounds(200, 750, 160, 60);
+        btnReservarAm.setBackground(Color.white);
+
+        btnReservarAm.addActionListener(actionEvent -> {
+            Object opcion= JOptionPane.showInputDialog(this, "¿En qué restaurante desea reservar mesa?", "Elegir", JOptionPane.QUESTION_MESSAGE, null, nombresame.toArray(), nombresame.toArray()[0]);
             String opcionelegida=opcion.toString();
             System.out.println(opcionelegida);
 
@@ -76,27 +75,28 @@ public class PlaceComponentsEsp extends JPanel implements Serializable {
             //this.jVentanaMadrimentate.inVentanaReserva();
             Reserva.setVisible(true);
             Reserva.setResizable(true);
-                });
+        });
 
-        JButton btnPedirE=new JButton("Pedir a domicilio");
-        btnPedirE.setFont(new Font("Arial Black", Font.BOLD, 18));
-        btnPedirE.setBounds(440, 750, 160, 60);
-        btnPedirE.setBackground(Color.white);
 
-        btnPedirE.addActionListener(actionEvent -> {
-            Object opcion= JOptionPane.showInputDialog(this, "¿En qué restaurante desea reservar mesa?", "Elegir", JOptionPane.QUESTION_MESSAGE, null, nombresesp.toArray(), nombresesp.toArray()[0]);
+        JButton btnPedirAm=new JButton("Pedir a domicilio");
+        btnPedirAm.setFont(new Font("Arial Black", Font.BOLD, 18));
+        btnPedirAm.setBounds(440, 750, 160, 60);
+        btnPedirAm.setBackground(Color.white);
+
+        btnPedirAm.addActionListener(actionEvent -> {
+            Object opcion= JOptionPane.showInputDialog(this, "¿En qué restaurante desea reservar mesa?", "Elegir", JOptionPane.QUESTION_MESSAGE, null, nombresame.toArray(), nombresame.toArray()[0]);
             String opcionelegida=opcion.toString();
             System.out.println(opcionelegida);
 
-            idrestauranteE= CustomerDAO.fetchIdRestaurantexNombre(opcionelegida);
-            System.out.println(idrestauranteE);
+            idrestauranteAm= CustomerDAO.fetchIdRestaurantexNombre(opcionelegida);
+            System.out.println(idrestauranteAm);
 
             JFrame Carta=new JFrame(opcionelegida);
             Carta.setSize(800, 900);
             Carta.setBackground(Color.lightGray);
             Carta.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             Carta.setLocationRelativeTo(null);
-            JPanel c=new PanelPedirDomicilio(idrestauranteE);
+            JPanel c=new PanelPedirDomicilio(idrestauranteAm);
             Carta.add(c);
             //Reserva.add(jVentanaMadrimentate.inVentanaReserva());
             //this.jVentanaMadrimentate.inVentanaReserva();
@@ -104,8 +104,8 @@ public class PlaceComponentsEsp extends JPanel implements Serializable {
             Carta.setResizable(true);
         });
 
-        this.add(btnReservarE);
-        this.add(btnPedirE);
+        this.add(btnReservarAm);
+        this.add(btnPedirAm);
 
 
 

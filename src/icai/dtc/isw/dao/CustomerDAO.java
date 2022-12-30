@@ -303,6 +303,61 @@ public class CustomerDAO {
 		return restaurantes;
 	}
 
+	public static ArrayList<Restaurante> fetchRestaurantexNombre(String nombre){
+		ArrayList<Restaurante> restaurantes = new ArrayList<>();
+		Connection con=ConnectionDAO.getInstance().getConnection();
+		//Restaurante resultado=new Restaurante();
+
+		try (PreparedStatement pst = con.prepareStatement("SELECT * FROM restaurantes WHERE nombre = '"+nombre+"'");
+			 ResultSet rs = pst.executeQuery()) {
+
+			while (rs.next()) {
+				restaurantes.add(new Restaurante(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+			}
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+		return restaurantes;
+	}
+
+	public static ArrayList<String> fetchNameRestaurantesxTipoComida(String food){
+		ArrayList<String> nombresrestaurantes = new ArrayList<>();
+		Connection con=ConnectionDAO.getInstance().getConnection();
+
+
+		try (PreparedStatement pst = con.prepareStatement("SELECT nombre FROM restaurantes WHERE tipocomida = '"+food+"'");
+			 ResultSet rs = pst.executeQuery()) {
+
+			while (rs.next()) {
+				nombresrestaurantes.add(rs.getString(1));
+			}
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+		return nombresrestaurantes;
+	}
+
+	public static Integer fetchIdRestaurantexNombre(String nombre){
+		//ArrayList<String> nombresrestaurantes = new ArrayList<>();
+		int result=0;
+		Connection con=ConnectionDAO.getInstance().getConnection();
+
+
+		try (PreparedStatement pst = con.prepareStatement("SELECT id FROM restaurantes WHERE nombre = '"+nombre+"'");
+			 ResultSet rs = pst.executeQuery()) {
+
+			while (rs.next()) {
+				result=rs.getInt(1);
+			}
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+		return result;
+	}
+
 
 
 
